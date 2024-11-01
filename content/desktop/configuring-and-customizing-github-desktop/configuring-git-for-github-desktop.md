@@ -32,7 +32,7 @@ Configuring your global author information in {% data variables.product.prodname
 {% mac %}
 
 {% data reusables.desktop.mac-select-desktop-menu %}
-{% data reusables.desktop.preferences-git-pane %}
+{% data reusables.desktop.settings-git-pane %}
 {% data reusables.desktop.name-field-git-config %}
 {% data reusables.desktop.select-email-git-config %}
 {% data reusables.desktop.click-save-git-config %}
@@ -89,8 +89,8 @@ You can configure the default branch that will be used when you create a new rep
 {% mac %}
 
 {% data reusables.desktop.mac-select-desktop-menu %}
-{% data reusables.desktop.preferences-git-pane %}
-1. Under "Default branch name for new repositories", select the default branch name you would like to use, or, to enter a custom name, select "Other...".
+{% data reusables.desktop.settings-git-pane %}
+1. Optional, under "Default branch name for new repositories" edit the name of the default branch as needed.
 {% data reusables.desktop.click-save-git-config %}
 
 {% endmac %}
@@ -109,7 +109,7 @@ You can configure the default branch that will be used when you create a new rep
 
 ## Further reading
 
-- "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/adding-an-email-address-to-your-github-account)"
-- "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address)"
-- "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)"
-- "[AUTOTITLE](/get-started/getting-started-with-git)"
+* "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/adding-an-email-address-to-your-github-account)"
+* "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address)"
+* "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)"
+* "[AUTOTITLE](/get-started/getting-started-with-git)"

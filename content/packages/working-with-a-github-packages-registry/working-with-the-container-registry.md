@@ -1,6 +1,6 @@
 ---
 title: Working with the Container registry
-intro: 'You can store and manage Docker and OCI images in the {% data variables.product.prodname_container_registry %}, which uses the package namespace `https://{% data reusables.package_registry.container-registry-hostname %}`.'
+intro: 'You can store and manage Docker and OCI images in the {% data variables.product.prodname_container_registry %}.'
 product: '{% data reusables.gated-features.packages %}'
 redirect_from:
   - /packages/managing-container-images-with-github-container-registry/pushing-and-pulling-docker-images
@@ -31,12 +31,22 @@ To use the {% data variables.product.prodname_container_registry %} on {% data v
 
 {% endif %}
 
+{% ifversion ghec %}
+
+## URL for the {% data variables.product.prodname_container_registry %}
+
+If you access {% data variables.product.github %} at {% data variables.product.prodname_dotcom_the_website %}, you will publish packages to {% data reusables.package_registry.container-registry-hostname %}. Examples in this article use this URL.
+
+If you access {% data variables.product.github %} at another domain, such as `octocorp.ghe.com`, replace "{% data reusables.package_registry.container-registry-hostname %}" with `https://containers.SUBDOMAIN.ghe.com`, where `SUBDOMAIN` is your enterprise's unique subdomain.
+
+{% endif %}
+
 ## About {% data variables.product.prodname_container_registry %} support
 
 The {% data variables.product.prodname_container_registry %} currently supports the following container image formats:
 
-- [Docker Image Manifest V2, Schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/)
-- [Open Container Initiative (OCI) Specifications](https://github.com/opencontainers/image-spec)
+* [Docker Image Manifest V2, Schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/)
+* [Open Container Initiative (OCI) Specifications](https://github.com/opencontainers/image-spec)
 
 When installing or publishing a Docker image, the {% data variables.product.prodname_container_registry %} supports foreign layers, such as Windows images.
 
@@ -235,3 +245,8 @@ For example, the following {% data variables.product.prodname_actions %} workflo
     push: true
     outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=My multi-arch image
 ```
+
+## Troubleshooting
+
+* The {% data variables.product.prodname_container_registry %} has a 10 GB size limit for each layer.
+* The {% data variables.product.prodname_container_registry %} has a 10 minute timeout limit for uploads.

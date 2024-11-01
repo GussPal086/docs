@@ -20,6 +20,8 @@ shortTitle: Install from Marketplace for org
 
 This article applies to installing and purchasing {% data variables.product.prodname_github_apps %} from {% data variables.product.prodname_marketplace %}. For more information on installing {% data variables.product.prodname_github_apps %} from a source other than {% data variables.product.prodname_marketplace %}, see "[AUTOTITLE](/apps/using-github-apps/installing-a-github-app-from-a-third-party)."
 
+{% data reusables.data-residency.github-marketplace-apps-unsupported %}
+
 If you install a {% data variables.product.prodname_github_app %} on your organization account and you choose a paid plan, you will pay for your app subscription on your organization's current billing date using your organization's existing payment method.
 
 {% data reusables.marketplace.free-trials %}
@@ -48,6 +50,12 @@ Admins of repositories that are owned by an organization can also install {% dat
 
 The "app manager" role in an organization does not give a person the ability to install a {% data variables.product.prodname_github_app %} in the organization. For more information, see "[AUTOTITLE](/apps/maintaining-github-apps/about-github-app-managers)."
 
+{% ifversion ghec %}
+
+For enterprise managed user accounts, only enterprise owners can purchase and install a paid {% data variables.product.prodname_github_app %} for an organization in the enterprise. Enterprise members cannot purchase a paid {% data variables.product.prodname_github_app %}. Organization owners with an enterprise managed user account can still install a free {% data variables.product.prodname_github_app %}.
+
+{% endif %}
+
 ## Installing a {% data variables.product.prodname_github_app %} in your organization
 
 {% data reusables.marketplace.visit-marketplace %}
@@ -65,5 +73,5 @@ The "app manager" role in an organization does not give a person the ability to 
 
 ## Further reading
 
-- "[AUTOTITLE](/billing/managing-your-github-billing-settings/adding-or-editing-a-payment-method)"
-- "[AUTOTITLE](/apps/using-github-apps/installing-an-app-in-your-personal-account)"
+* "[AUTOTITLE](/billing/managing-your-github-billing-settings/adding-or-editing-a-payment-method)"
+* "[AUTOTITLE](/apps/using-github-apps/installing-an-app-in-your-personal-account)"

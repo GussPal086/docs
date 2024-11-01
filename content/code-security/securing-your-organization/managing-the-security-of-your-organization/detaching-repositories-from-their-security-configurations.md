@@ -2,7 +2,7 @@
 title: Detaching repositories from their security configurations
 shortTitle: Detach security configuration
 intro: 'You can unlink repositories from their {% data variables.product.prodname_security_configurations %} and instead manage their security enablement settings at the repository level.'
-permissions: '{% data reusables.security-configurations.security-configurations-permissions %}'
+permissions: '{% data reusables.permissions.security-org-enable %}'
 versions:
   feature: security-configurations
 topics:
@@ -10,8 +10,6 @@ topics:
   - Organizations
   - Security
 ---
-
-{% data reusables.security-configurations.security-configurations-beta-note %}
 
 ## About detaching repositories from their {% data variables.product.prodname_security_configurations %}
 
@@ -26,8 +24,8 @@ Alternatively, if you want to apply a {% data variables.product.prodname_securit
 {% data reusables.security-configurations.view-configurations-page %}
 1. Optionally, in the "Apply configurations" section, filter for specific repositories you would like to detach from their configurations. To learn more, see "[AUTOTITLE](/code-security/securing-your-organization/managing-the-security-of-your-organization/filtering-repositories-in-your-organization-using-the-repository-table)."
 1. In the repository table, select repositories with one of three methods:
-    - Select each individual repository you would like to detach.
-    - To select all repositories displayed on the current page of the repository table, select **NUMBER repositories**.
-    - After selecting **NUMBER repositories**, to select _all_ repositories in your organization that match any filters you have applied, click **Select all**.
+    * Select each individual repository you would like to detach.
+    * To select all repositories displayed on the current page of the repository table, select **NUMBER repositories**.
+    * After selecting **NUMBER repositories**, to select _all_ repositories in your organization that match any filters you have applied, click **Select all**.
 1. Select the **Apply configuration** {% octicon "triangle-down" aria-hidden="true" %} dropdown menu, then click **No configuration**.
 1. To finish detaching your repositories from their linked {% data variables.product.prodname_security_configurations %}, in the "No configuration?" window, click **No configuration**.

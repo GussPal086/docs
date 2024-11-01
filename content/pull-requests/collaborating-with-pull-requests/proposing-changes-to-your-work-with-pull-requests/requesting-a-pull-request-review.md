@@ -28,6 +28,12 @@ Organization members with write access can also assign a pull request review to 
 
 {% endnote %}
 
+{% ifversion copilot-hadron %}
+
+## Requesting reviews from collaborators and organization members
+
+{% endif %}
+
 You can request a review from either a suggested or specific person. Suggested reviewers are based on [git blame data](/repositories/working-with-files/using-files/viewing-a-file). If you request a review, other people with read access to the repository can still review your pull request. Once someone has reviewed your pull request and you've made the necessary changes, you can re-request review from the same reviewer. If the requested reviewer does not submit a review, and the pull request meets the repository's [mergeability requirements](/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests), you can still merge the pull request.
 
 {% data reusables.repositories.sidebar-pr %}
@@ -44,6 +50,17 @@ You can request a review from either a suggested or specific person. Suggested r
 
    ![Screenshot of the "Reviewers" section of a pull request's sidebar. To the right of @octocat, a sync icon is outlined in dark orange.](/assets/images/help/pull_requests/request-re-review.png)
 
+{% ifversion copilot-hadron %}
+
+## Requesting a review from {% data variables.product.prodname_copilot %}
+
+>[!NOTE]
+>{% data variables.product.prodname_copilot_workspace %} is currently in {% data variables.release-phases.public_preview %}. For information about joining the {% data variables.release-phases.public_preview %}, see "[AUTOTITLE](/copilot/using-github-copilot/using-github-copilot-for-pull-requests/using-copilot-to-help-you-work-on-a-pull-request)."
+
+You can also request that {% data variables.product.prodname_copilot_short %} reviews your code and provides feedback and suggested changes on your work. See "[AUTOTITLE](/copilot/using-github-copilot/code-review/using-copilot-code-review)."
+
+{% endif %}
+
 ## Further reading
 
-- "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)"
+* "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)"

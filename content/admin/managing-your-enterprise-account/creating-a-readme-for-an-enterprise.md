@@ -15,7 +15,7 @@ shortTitle: Create a README
 
 {% data reusables.enterprise.about-readmes %}
 
-The README is displayed on the enterprise's "Overview" page, which is the page you see when you navigate to the enterprise at `{% data variables.product.product_url %}/enterprises/YOUR-ENTERPRISE`. This page is only visible to members of the enterprise.
+The README is displayed on the enterprise's "Overview" page, which is the landing page you see when you navigate to the enterprise. This page is only visible to members of the enterprise.
 
 You can also create READMEs for organizations in your enterprise, visible either publicly or only to members. For more information, see "[AUTOTITLE](/organizations/collaborating-with-groups-in-organizations/customizing-your-organizations-profile)."
 
@@ -31,5 +31,5 @@ You can also create READMEs for organizations in your enterprise, visible either
 
 ## Further reading
 
-- "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)"
-- "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)"
+* "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)"
+* "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)"

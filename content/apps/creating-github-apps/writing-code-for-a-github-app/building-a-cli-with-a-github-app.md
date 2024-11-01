@@ -18,11 +18,17 @@ This tutorial demonstrates how to build a command line interface (CLI) backed by
 
 The CLI will have three commands:
 
-- `help`: Outputs the usage instructions.
-- `login`: Generates a user access token that the app can use to make API requests on behalf of the user.
-- `whoami`: Returns information about the logged in user.
+* `help`: Outputs the usage instructions.
+* `login`: Generates a user access token that the app can use to make API requests on behalf of the user.
+* `whoami`: Returns information about the logged in user.
 
 This tutorial uses Ruby, but you can write a CLI and use the device flow to generate a user access token with any programming language.
+
+{% ifversion ghec %}
+
+> [!NOTE] {% data reusables.enterprise-data-residency.access-domain %}
+
+{% endif %}
 
 ### About device flow and user access tokens
 
@@ -45,8 +51,7 @@ This tutorial assumes that you have a basic understanding of Ruby. For more info
 You will need your app's client ID in order to generate a user access token via the device flow.
 
 {% data reusables.apps.settings-step %}
-{% data reusables.user-settings.developer_settings %}
-{% data reusables.user-settings.github_apps %}
+{% data reusables.apps.enterprise-apps-steps %}
 1. Next to the {% data variables.product.prodname_github_app %} that you want to work with, click **Edit**.
 1. On the app's settings page, find the client ID for your app. You will use it later in this tutorial. Note that the client ID is different from the app ID.
 
@@ -490,7 +495,7 @@ Now that your app can generate a user access token, you can make API requests on
 
    ```ruby copy
    def whoami
-     uri = URI("{% data variables.product.api_url_code %}/user")
+     uri = URI("{% data variables.product.rest_url %}/user")
 
      begin
        token = File.read("./.token").strip
@@ -675,7 +680,7 @@ This is the full code example that was outlined in the previous section. Replace
    end
 
    def whoami
-     uri = URI("{% data variables.product.api_url_code %}/user")
+     uri = URI("{% data variables.product.rest_url %}/user")
 
      begin
        token = File.read("./.token").strip

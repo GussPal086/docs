@@ -19,6 +19,16 @@ shortTitle: npm registry
 
 {% data reusables.package_registry.admins-can-configure-package-types %}
 
+{% ifversion ghec %}
+
+## URL for the {% data variables.product.prodname_npm_registry %}
+
+If you access {% data variables.product.github %} at {% data variables.product.prodname_dotcom_the_website %}, you will publish packages to https://npm.pkg.github.com. Examples in this article use this URL.
+
+If you access {% data variables.product.github %} at another domain, such as `octocorp.ghe.com`, replace "https://npm.pkg.github.com" with `https://npm.SUBDOMAIN.ghe.com`, where `SUBDOMAIN` is your enterprise's unique subdomain.
+
+{% endif %}
+
 {% ifversion packages-npm-v2 %}
 {% else %}
 
@@ -71,7 +81,7 @@ If your instance has subdomain isolation disabled:
 
 To authenticate by logging in to npm, use the `npm login` command, replacing USERNAME with your {% data variables.product.prodname_dotcom %} username, TOKEN with your {% data variables.product.pat_v1 %}, and PUBLIC-EMAIL-ADDRESS with your email address.
 
-If you are using npm CLI version 9 or greater and are logging in or out of a private registry using the command line, you should use the `--auth-type=legacy` option to read in your authentication details from prompts instead of using the default login flow through a browser. For more information, see [`npm-login`](https://docs.npmjs.com/cli/v9/commands/npm-login).
+If you are using npm CLI version 9 or greater and are logging in or out of a private registry using the command line, you should use the `--auth-type=legacy` option to read in your authentication details from prompts instead of using the default login flow through a browser. For more information, see [`npm-login`](https://docs.npmjs.com/cli/v10/commands/npm-login).
 
 If {% data variables.product.prodname_registry %} is not your default package registry for using npm and you want to use the `npm audit` command, we recommend you use the `--scope` flag with the namespace that hosts the package (the personal account or organization {% ifversion packages-npm-v2 %}to which the package is scoped{% else %}that owns the repository where the package is hosted{% endif %}) when you authenticate to {% data variables.product.prodname_registry %}.
 
@@ -104,8 +114,8 @@ $ npm login --scope=@NAMESPACE --auth-type=legacy --registry=https://HOSTNAME/_r
 
 **Note:**
 
-- Package names and scopes must only use lowercase letters.
-- The tarball for an npm version must be smaller than 256MB in size.
+* Package names and scopes must only use lowercase letters.
+* The tarball for an npm version must be smaller than 256MB in size.
 
 {% endnote %}
 {% else %}

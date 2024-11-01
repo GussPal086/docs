@@ -20,16 +20,25 @@ Other people can suggest specific changes to your pull request. You can apply th
 
 To quickly incorporate more than one suggested change into a single commit, you can also apply suggested changes as a batch. Applying one suggested change or a batch of suggested changes creates a single commit on the compare branch of the pull request.
 
+{% ifversion copilot-hadron %}
+
+>[!NOTE]
+>If you are part of the {% data variables.release-phases.public_preview %} of {% data variables.product.prodname_copilot_workspace %}, suggested changes from people on your team, {% data variables.product.prodname_copilot_short %}, or {% data variables.product.prodname_copilot_autofix %} can all be applied and edited in {% data variables.product.prodname_copilot_workspace %}. Click **Open in {% data variables.product.prodname_copilot_workspace_short %}** on a suggested change to get started.
+>
+>For more information about {% data variables.product.prodname_copilot_workspace %} and joining the {% data variables.release-phases.public_preview %}, see "[AUTOTITLE](/copilot/using-github-copilot/using-github-copilot-for-pull-requests/using-copilot-to-help-you-work-on-a-pull-request)."
+
+{% endif %}
+
 Each person who suggested a change included in the commit will be a co-author of the commit. The person who applies the suggested changes will be a co-author and the committer of the commit. For more information about the term committer in Git, see "[Git Basics - Viewing the Commit History](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)" from the _Pro Git_ book site.
 
 {% data reusables.repositories.sidebar-pr %}
 1. In the list of pull requests, click the pull request you'd like to apply a suggested change to.
 1. Navigate to the first suggested change you'd like to apply.
-    - To apply the change in its own commit, click **Commit suggestion**.
+    * To apply the change in its own commit, click **Commit suggestion**.
 
        ![Screenshot of a review comment with a suggestion. The "Commit suggestion" option is outlined in dark orange.](/assets/images/help/pull_requests/commit-suggestion-button.png)
 
-    - To add the suggestion to a batch of changes, click **Add suggestion to batch**. Continue to add the suggested changes you want to include in a single commit. When you've finished adding suggested changes, click **Commit suggestions**.
+    * To add the suggestion to a batch of changes, click **Add suggestion to batch**. Continue to add the suggested changes you want to include in a single commit. When you've finished adding suggested changes, click **Commit suggestions**.
 
       ![Screenshot of a review comment with a suggestion. The "Add suggestion to batch" option is outlined in dark orange.](/assets/images/help/pull_requests/add-suggestion-to-batch.png)
 
@@ -46,8 +55,8 @@ If someone suggests changes to your pull request and the changes are out of the 
 
 ## Further reading
 
-- "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)"
-- "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request)"
-- "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)"
-- "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)"
-- "[AUTOTITLE](/issues/tracking-your-work-with-issues/creating-an-issue)"
+* "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)"
+* "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request)"
+* "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request)"
+* "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)"
+* "[AUTOTITLE](/issues/tracking-your-work-with-issues/creating-an-issue)"

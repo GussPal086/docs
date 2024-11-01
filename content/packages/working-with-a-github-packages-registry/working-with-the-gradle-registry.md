@@ -15,6 +15,12 @@ versions:
 shortTitle: Gradle registry
 ---
 
+{% ifversion ghec %}
+
+> [!NOTE] The Gradle registry is not available for {% data variables.enterprise.data_residency %}.
+
+{% endif %}
+
 {% data reusables.package_registry.packages-ghes-release-stage %}
 
 {% data reusables.package_registry.admins-can-configure-package-types %}
@@ -217,5 +223,5 @@ To use a published package from {% data variables.product.prodname_registry %}, 
 
 ## Further reading
 
-- "[AUTOTITLE](/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)"
-- "[AUTOTITLE](/packages/learn-github-packages/deleting-and-restoring-a-package)"
+* "[AUTOTITLE](/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)"
+* "[AUTOTITLE](/packages/learn-github-packages/deleting-and-restoring-a-package)"

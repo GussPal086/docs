@@ -2,7 +2,7 @@
 title: Filtering repositories in your organization using the repository table
 shortTitle: Filter repositories
 intro: 'You can filter the repository table for your organization to better manage the security settings of specific repositories.'
-permissions: '{% data reusables.security-configurations.security-configurations-permissions %}'
+permissions: '{% data reusables.permissions.security-org-enable %}'
 versions:
   feature: security-configurations
 topics:
@@ -21,8 +21,8 @@ By default, when managing {% data variables.product.prodname_security_configurat
 {% data reusables.organizations.org_settings %}
 {% data reusables.security-configurations.view-configurations-page %}
 1. In the "Apply configurations" section, use the **Search repositories** search bar to filter repositories in your organization in one of two ways:
-    - Find repositories by name with free-text search
-    - Select filters from the dropdown menu that appears once you click the search bar
+    * Find repositories by name with free-text search
+    * Select filters from the dropdown menu that appears once you click the search bar
 
 ## Filtering the repository table with the advanced filter builder
 

@@ -106,6 +106,59 @@
       ]
     },
     {
+      "name": "enterpriseMemberInvitation",
+      "type": "EnterpriseMemberInvitation",
+      "kind": "objects",
+      "id": "enterprisememberinvitation",
+      "href": "/graphql/reference/objects#enterprisememberinvitation",
+      "description": "<p>Look up a pending enterprise unaffiliated member invitation by invitee and enterprise.</p>",
+      "args": [
+        {
+          "name": "enterpriseSlug",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>The slug of the enterprise the user was invited to join.</p>"
+        },
+        {
+          "name": "userLogin",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>The login of the user invited to join the business.</p>"
+        }
+      ]
+    },
+    {
+      "name": "enterpriseMemberInvitationByToken",
+      "type": "EnterpriseMemberInvitation",
+      "kind": "objects",
+      "id": "enterprisememberinvitation",
+      "href": "/graphql/reference/objects#enterprisememberinvitation",
+      "description": "<p>Look up a pending enterprise unaffiliated member invitation by invitation token.</p>",
+      "args": [
+        {
+          "name": "invitationToken",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>The invitation token sent with the invitation email.</p>"
+        }
+      ]
+    },
+    {
+      "name": "id",
+      "type": "ID!",
+      "kind": "scalars",
+      "id": "id",
+      "href": "/graphql/reference/scalars#id",
+      "description": "<p>ID of the object.</p>",
+      "args": []
+    },
+    {
       "name": "license",
       "type": "License",
       "kind": "objects",
@@ -579,6 +632,22 @@
           "description": "<p>A list of classifications to filter advisories by.</p>"
         },
         {
+          "name": "epssPercentage",
+          "type": "Float",
+          "id": "float",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#float",
+          "description": "<p>The EPSS percentage to filter advisories by.</p>"
+        },
+        {
+          "name": "epssPercentile",
+          "type": "Float",
+          "id": "float",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#float",
+          "description": "<p>The EPSS percentile to filter advisories by.</p>"
+        },
+        {
           "name": "first",
           "type": "Int",
           "id": "int",
@@ -965,6 +1034,48 @@
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string",
           "description": "<p>A message confirming the result of accepting an administrator invitation.</p>"
+        }
+      ]
+    },
+    {
+      "name": "acceptEnterpriseMemberInvitation",
+      "kind": "mutations",
+      "id": "acceptenterprisememberinvitation",
+      "href": "/graphql/reference/mutations#acceptenterprisememberinvitation",
+      "description": "<p>Accepts a pending invitation for a user to become an unaffiliated member of an enterprise.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "AcceptEnterpriseMemberInvitationInput!",
+          "id": "acceptenterprisememberinvitationinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#acceptenterprisememberinvitationinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "invitation",
+          "type": "EnterpriseMemberInvitation",
+          "id": "enterprisememberinvitation",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprisememberinvitation",
+          "description": "<p>The invitation that was accepted.</p>"
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A message confirming the result of accepting an unaffiliated member invitation.</p>"
         }
       ]
     },
@@ -1893,6 +2004,48 @@
       ]
     },
     {
+      "name": "cancelEnterpriseMemberInvitation",
+      "kind": "mutations",
+      "id": "cancelenterprisememberinvitation",
+      "href": "/graphql/reference/mutations#cancelenterprisememberinvitation",
+      "description": "<p>Cancels a pending invitation for an unaffiliated member to join an enterprise.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "CancelEnterpriseMemberInvitationInput!",
+          "id": "cancelenterprisememberinvitationinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#cancelenterprisememberinvitationinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "invitation",
+          "type": "EnterpriseMemberInvitation",
+          "id": "enterprisememberinvitation",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprisememberinvitation",
+          "description": "<p>The invitation that was canceled.</p>"
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A message confirming the result of canceling an member invitation.</p>"
+        }
+      ]
+    },
+    {
       "name": "cancelSponsorship",
       "kind": "mutations",
       "id": "cancelsponsorship",
@@ -2241,6 +2394,40 @@
       ]
     },
     {
+      "name": "convertProjectV2DraftIssueItemToIssue",
+      "kind": "mutations",
+      "id": "convertprojectv2draftissueitemtoissue",
+      "href": "/graphql/reference/mutations#convertprojectv2draftissueitemtoissue",
+      "description": "<p>Converts a projectV2 draft issue item to an issue.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "ConvertProjectV2DraftIssueItemToIssueInput!",
+          "id": "convertprojectv2draftissueitemtoissueinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#convertprojectv2draftissueitemtoissueinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "item",
+          "type": "ProjectV2Item",
+          "id": "projectv2item",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2item",
+          "description": "<p>The updated project item.</p>"
+        }
+      ]
+    },
+    {
       "name": "convertPullRequestToDraft",
       "kind": "mutations",
       "id": "convertpullrequesttodraft",
@@ -2508,22 +2695,6 @@
       "id": "createdeployment",
       "href": "/graphql/reference/mutations#createdeployment",
       "description": "<p>Creates a new deployment event.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Deployments preview",
-        "description": "This preview adds support for deployments mutations and new deployments features.",
-        "toggled_by": "flash-preview",
-        "toggled_on": [
-          "DeploymentStatus.environment",
-          "Mutation.createDeploymentStatus",
-          "Mutation.createDeployment"
-        ],
-        "owning_teams": [
-          "@github/pages"
-        ],
-        "accept_header": "application/vnd.github.flash-preview+json",
-        "href": "/graphql/overview/schema-previews#deployments-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -2566,22 +2737,6 @@
       "id": "createdeploymentstatus",
       "href": "/graphql/reference/mutations#createdeploymentstatus",
       "description": "<p>Create a deployment status.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Deployments preview",
-        "description": "This preview adds support for deployments mutations and new deployments features.",
-        "toggled_by": "flash-preview",
-        "toggled_on": [
-          "DeploymentStatus.environment",
-          "Mutation.createDeploymentStatus",
-          "Mutation.createDeployment"
-        ],
-        "owning_teams": [
-          "@github/pages"
-        ],
-        "accept_header": "application/vnd.github.flash-preview+json",
-        "href": "/graphql/overview/schema-previews#deployments-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -2794,22 +2949,6 @@
       "id": "createlabel",
       "href": "/graphql/reference/mutations#createlabel",
       "description": "<p>Creates a new label.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Labels preview",
-        "description": "This preview adds support for adding, updating, creating and deleting labels.",
-        "toggled_by": "bane-preview",
-        "toggled_on": [
-          "Mutation.createLabel",
-          "Mutation.deleteLabel",
-          "Mutation.updateLabel"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.bane-preview+json",
-        "href": "/graphql/overview/schema-previews#labels-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -3013,6 +3152,40 @@
           "kind": "unions",
           "href": "/graphql/reference/unions#projectv2fieldconfiguration",
           "description": "<p>The new field.</p>"
+        }
+      ]
+    },
+    {
+      "name": "createProjectV2StatusUpdate",
+      "kind": "mutations",
+      "id": "createprojectv2statusupdate",
+      "href": "/graphql/reference/mutations#createprojectv2statusupdate",
+      "description": "<p>Creates a status update within a Project.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "CreateProjectV2StatusUpdateInput!",
+          "id": "createprojectv2statusupdateinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#createprojectv2statusupdateinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "statusUpdate",
+          "type": "ProjectV2StatusUpdate",
+          "id": "projectv2statusupdate",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2statusupdate",
+          "description": "<p>The status update updated in the project.</p>"
         }
       ]
     },
@@ -3684,22 +3857,6 @@
       "id": "deletelabel",
       "href": "/graphql/reference/mutations#deletelabel",
       "description": "<p>Deletes a label.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Labels preview",
-        "description": "This preview adds support for adding, updating, creating and deleting labels.",
-        "toggled_by": "bane-preview",
-        "toggled_on": [
-          "Mutation.createLabel",
-          "Mutation.deleteLabel",
-          "Mutation.updateLabel"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.bane-preview+json",
-        "href": "/graphql/overview/schema-previews#labels-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -3760,20 +3917,6 @@
       "id": "deletepackageversion",
       "href": "/graphql/reference/mutations#deletepackageversion",
       "description": "<p>Delete a package version.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Access to package version deletion preview",
-        "description": "This preview adds support for the DeletePackageVersion mutation which enables deletion of private package versions.",
-        "toggled_by": "package-deletes-preview",
-        "toggled_on": [
-          "Mutation.deletePackageVersion"
-        ],
-        "owning_teams": [
-          "@github/pe-package-registry"
-        ],
-        "accept_header": "application/vnd.github.package-deletes-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-package-version-deletion-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -4019,6 +4162,48 @@
           "kind": "scalars",
           "href": "/graphql/reference/scalars#id",
           "description": "<p>The ID of the deleted item.</p>"
+        }
+      ]
+    },
+    {
+      "name": "deleteProjectV2StatusUpdate",
+      "kind": "mutations",
+      "id": "deleteprojectv2statusupdate",
+      "href": "/graphql/reference/mutations#deleteprojectv2statusupdate",
+      "description": "<p>Deletes a project status update.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "DeleteProjectV2StatusUpdateInput!",
+          "id": "deleteprojectv2statusupdateinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#deleteprojectv2statusupdateinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "deletedStatusUpdateId",
+          "type": "ID",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "description": "<p>The ID of the deleted status update.</p>"
+        },
+        {
+          "name": "projectV2",
+          "type": "ProjectV2",
+          "id": "projectv2",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2",
+          "description": "<p>The project the deleted status update was in.</p>"
         }
       ]
     },
@@ -4674,20 +4859,6 @@
       "id": "importproject",
       "href": "/graphql/reference/mutations#importproject",
       "description": "<p>Creates a new project by importing columns and a list of issues/PRs.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Import project preview",
-        "description": "This preview adds support for importing projects.",
-        "toggled_by": "slothette-preview",
-        "toggled_on": [
-          "Mutation.importProject"
-        ],
-        "owning_teams": [
-          "@github/pe-issues-projects"
-        ],
-        "accept_header": "application/vnd.github.slothette-preview+json",
-        "href": "/graphql/overview/schema-previews#import-project-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -4747,6 +4918,40 @@
           "kind": "objects",
           "href": "/graphql/reference/objects#enterpriseadministratorinvitation",
           "description": "<p>The created enterprise administrator invitation.</p>"
+        }
+      ]
+    },
+    {
+      "name": "inviteEnterpriseMember",
+      "kind": "mutations",
+      "id": "inviteenterprisemember",
+      "href": "/graphql/reference/mutations#inviteenterprisemember",
+      "description": "<p>Invite someone to become an unaffiliated member of the enterprise.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "InviteEnterpriseMemberInput!",
+          "id": "inviteenterprisememberinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#inviteenterprisememberinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "invitation",
+          "type": "EnterpriseMemberInvitation",
+          "id": "enterprisememberinvitation",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprisememberinvitation",
+          "description": "<p>The created enterprise member invitation.</p>"
         }
       ]
     },
@@ -5259,6 +5464,48 @@
       ]
     },
     {
+      "name": "pinEnvironment",
+      "kind": "mutations",
+      "id": "pinenvironment",
+      "href": "/graphql/reference/mutations#pinenvironment",
+      "description": "<p>Pin an environment to a repository.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "PinEnvironmentInput!",
+          "id": "pinenvironmentinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#pinenvironmentinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "environment",
+          "type": "Environment",
+          "id": "environment",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#environment",
+          "description": "<p>The environment that was pinned.</p>"
+        },
+        {
+          "name": "pinnedEnvironment",
+          "type": "PinnedEnvironment",
+          "id": "pinnedenvironment",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pinnedenvironment",
+          "description": "<p>The pinned environment if we pinned.</p>"
+        }
+      ]
+    },
+    {
       "name": "pinIssue",
       "kind": "mutations",
       "id": "pinissue",
@@ -5525,7 +5772,7 @@
       "kind": "mutations",
       "id": "removeenterpriseidentityprovider",
       "href": "/graphql/reference/mutations#removeenterpriseidentityprovider",
-      "description": "<p>Removes the identity provider from an enterprise.</p>",
+      "description": "<p>Removes the identity provider from an enterprise. Owners of enterprises both\nwith and without Enterprise Managed Users may use this mutation.</p>",
       "inputFields": [
         {
           "name": "input",
@@ -5973,6 +6220,40 @@
           "kind": "objects",
           "href": "/graphql/reference/objects#pullrequest",
           "description": "<p>The pull request that was reopened.</p>"
+        }
+      ]
+    },
+    {
+      "name": "reorderEnvironment",
+      "kind": "mutations",
+      "id": "reorderenvironment",
+      "href": "/graphql/reference/mutations#reorderenvironment",
+      "description": "<p>Reorder a pinned repository environment.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "ReorderEnvironmentInput!",
+          "id": "reorderenvironmentinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#reorderenvironmentinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "environment",
+          "type": "Environment",
+          "id": "environment",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#environment",
+          "description": "<p>The environment that was reordered.</p>"
         }
       ]
     },
@@ -7931,6 +8212,48 @@
       ]
     },
     {
+      "name": "updateEnterpriseTwoFactorAuthenticationDisallowedMethodsSetting",
+      "kind": "mutations",
+      "id": "updateenterprisetwofactorauthenticationdisallowedmethodssetting",
+      "href": "/graphql/reference/mutations#updateenterprisetwofactorauthenticationdisallowedmethodssetting",
+      "description": "<p>Sets the two-factor authentication methods that users of an enterprise may not use.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "UpdateEnterpriseTwoFactorAuthenticationDisallowedMethodsSettingInput!",
+          "id": "updateenterprisetwofactorauthenticationdisallowedmethodssettinginput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#updateenterprisetwofactorauthenticationdisallowedmethodssettinginput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "enterprise",
+          "type": "Enterprise",
+          "id": "enterprise",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprise",
+          "description": "<p>The enterprise with the updated two-factor authentication disallowed methods setting.</p>"
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A message confirming the result of updating the two-factor authentication disallowed methods setting.</p>"
+        }
+      ]
+    },
+    {
       "name": "updateEnterpriseTwoFactorAuthenticationRequiredSetting",
       "kind": "mutations",
       "id": "updateenterprisetwofactorauthenticationrequiredsetting",
@@ -8190,22 +8513,6 @@
       "id": "updatelabel",
       "href": "/graphql/reference/mutations#updatelabel",
       "description": "<p>Updates an existing label.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Labels preview",
-        "description": "This preview adds support for adding, updating, creating and deleting labels.",
-        "toggled_by": "bane-preview",
-        "toggled_on": [
-          "Mutation.createLabel",
-          "Mutation.deleteLabel",
-          "Mutation.updateLabel"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.bane-preview+json",
-        "href": "/graphql/overview/schema-previews#labels-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -8659,6 +8966,40 @@
       ]
     },
     {
+      "name": "updateProjectV2StatusUpdate",
+      "kind": "mutations",
+      "id": "updateprojectv2statusupdate",
+      "href": "/graphql/reference/mutations#updateprojectv2statusupdate",
+      "description": "<p>Updates a status update within a Project.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "UpdateProjectV2StatusUpdateInput!",
+          "id": "updateprojectv2statusupdateinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#updateprojectv2statusupdateinput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "statusUpdate",
+          "type": "ProjectV2StatusUpdate",
+          "id": "projectv2statusupdate",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2statusupdate",
+          "description": "<p>The status update updated in the project.</p>"
+        }
+      ]
+    },
+    {
       "name": "updatePullRequest",
       "kind": "mutations",
       "id": "updatepullrequest",
@@ -8842,22 +9183,6 @@
       "id": "updaterefs",
       "href": "/graphql/reference/mutations#updaterefs",
       "description": "<p>Creates, updates and/or deletes multiple refs in a repository.</p>\n<p>This mutation takes a list of <code>RefUpdate</code>s and performs these updates\non the repository. All updates are performed atomically, meaning that\nif one of them is rejected, no other ref will be modified.</p>\n<p><code>RefUpdate.beforeOid</code> specifies that the given reference needs to point\nto the given value before performing any updates. A value of\n<code>0000000000000000000000000000000000000000</code> can be used to verify that\nthe references should not exist.</p>\n<p><code>RefUpdate.afterOid</code> specifies the value that the given reference\nwill point to after performing all updates. A value of\n<code>0000000000000000000000000000000000000000</code> can be used to delete a\nreference.</p>\n<p>If <code>RefUpdate.force</code> is set to <code>true</code>, a non-fast-forward updates\nfor the given reference will be allowed.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Update refs preview update multiple refs in a single operation preview",
-        "description": "This preview adds support for updating multiple refs in a single operation.",
-        "toggled_by": "update-refs-preview",
-        "toggled_on": [
-          "Mutation.updateRefs",
-          "GitRefname",
-          "RefUpdate"
-        ],
-        "owning_teams": [
-          "@github/repos"
-        ],
-        "accept_header": "application/vnd.github.update-refs-preview+json",
-        "href": "/graphql/overview/schema-previews#update-refs-preview-update-multiple-refs-in-a-single-operation-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -9130,25 +9455,6 @@
       "id": "updateteamreviewassignment",
       "href": "/graphql/reference/mutations#updateteamreviewassignment",
       "description": "<p>Updates team review assignment.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Team review assignments preview",
-        "description": "This preview adds support for updating the settings for team review assignment.",
-        "toggled_by": "stone-crop-preview",
-        "toggled_on": [
-          "Mutation.updateTeamReviewAssignment",
-          "TeamReviewAssignmentAlgorithm",
-          "Team.reviewRequestDelegationEnabled",
-          "Team.reviewRequestDelegationAlgorithm",
-          "Team.reviewRequestDelegationMemberCount",
-          "Team.reviewRequestDelegationNotifyTeam"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.stone-crop-preview+json",
-        "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
-      },
       "inputFields": [
         {
           "name": "input",
@@ -9546,32 +9852,7 @@
           "type": "Project",
           "id": "project",
           "kind": "objects",
-          "href": "/graphql/reference/objects#project",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/objects#project"
         },
         {
           "name": "projectCard",
@@ -9579,32 +9860,7 @@
           "type": "ProjectCard",
           "id": "projectcard",
           "kind": "objects",
-          "href": "/graphql/reference/objects#projectcard",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/objects#projectcard"
         },
         {
           "name": "projectColumnName",
@@ -9612,32 +9868,7 @@
           "type": "String!",
           "id": "string",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#string",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/scalars#string"
         }
       ]
     },
@@ -9655,6 +9886,14 @@
         }
       ],
       "fields": [
+        {
+          "name": "clientId",
+          "description": "<p>The client ID of the app.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
         {
           "name": "createdAt",
           "description": "<p>Identifies the date and time when the object was created.</p>",
@@ -13117,6 +13356,56 @@
       ]
     },
     {
+      "name": "CodeScanningParameters",
+      "kind": "objects",
+      "id": "codescanningparameters",
+      "href": "/graphql/reference/objects#codescanningparameters",
+      "description": "<p>Choose which tools must provide code scanning results before the reference is\nupdated. When configured, code scanning must be enabled and have results for\nboth the commit and the reference being updated.</p>",
+      "fields": [
+        {
+          "name": "codeScanningTools",
+          "description": "<p>Tools that must provide code scanning results for this rule to pass.</p>",
+          "type": "[CodeScanningTool!]!",
+          "id": "codescanningtool",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#codescanningtool"
+        }
+      ]
+    },
+    {
+      "name": "CodeScanningTool",
+      "kind": "objects",
+      "id": "codescanningtool",
+      "href": "/graphql/reference/objects#codescanningtool",
+      "description": "<p>A tool that must provide code scanning results for this rule to pass.</p>",
+      "fields": [
+        {
+          "name": "alertsThreshold",
+          "description": "<p>The severity level at which code scanning results that raise alerts block a\nreference update. For more information on alert severity levels, see \"<a href=\"$%7BexternalDocsUrl%7D/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels\">About code scanning alerts</a>.\".</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "securityAlertsThreshold",
+          "description": "<p>The severity level at which code scanning results that raise security alerts\nblock a reference update. For more information on security severity levels,\nsee \"<a href=\"$%7BexternalDocsUrl%7D/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels\">About code scanning alerts</a>.\".</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "tool",
+          "description": "<p>The name of a code scanning tool.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        }
+      ]
+    },
+    {
       "name": "CommentDeletedEvent",
       "kind": "objects",
       "id": "commentdeletedevent",
@@ -13707,7 +13996,7 @@
             },
             {
               "name": "since",
-              "description": "<p>Allows specifying a beginning time or date for fetching commits.</p>",
+              "description": "<p>Allows specifying a beginning time or date for fetching commits. Unexpected\nresults may be returned for dates not between 1970-01-01 and 2099-12-13 (inclusive).</p>",
               "type": {
                 "name": "GitTimestamp",
                 "id": "gittimestamp",
@@ -13717,7 +14006,7 @@
             },
             {
               "name": "until",
-              "description": "<p>Allows specifying an ending time or date for fetching commits.</p>",
+              "description": "<p>Allows specifying an ending time or date for fetching commits. Unexpected\nresults may be returned for dates not between 1970-01-01 and 2099-12-13 (inclusive).</p>",
               "type": {
                 "name": "GitTimestamp",
                 "id": "gittimestamp",
@@ -16236,32 +16525,7 @@
           "type": "Project",
           "id": "project",
           "kind": "objects",
-          "href": "/graphql/reference/objects#project",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/objects#project"
         },
         {
           "name": "projectCard",
@@ -16269,32 +16533,7 @@
           "type": "ProjectCard",
           "id": "projectcard",
           "kind": "objects",
-          "href": "/graphql/reference/objects#projectcard",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/objects#projectcard"
         },
         {
           "name": "projectColumnName",
@@ -16302,32 +16541,7 @@
           "type": "String!",
           "id": "string",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#string",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/scalars#string"
         }
       ]
     },
@@ -16376,6 +16590,47 @@
           "id": "id",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#id"
+        }
+      ]
+    },
+    {
+      "name": "CopilotEndpoints",
+      "kind": "objects",
+      "id": "copilotendpoints",
+      "href": "/graphql/reference/objects#copilotendpoints",
+      "description": "<p>Copilot endpoint information.</p>",
+      "fields": [
+        {
+          "name": "api",
+          "description": "<p>Copilot API endpoint.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "originTracker",
+          "description": "<p>Copilot origin tracker endpoint.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "proxy",
+          "description": "<p>Copilot proxy endpoint.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "telemetry",
+          "description": "<p>Copilot telemetry endpoint.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
         }
       ]
     },
@@ -17289,26 +17544,6 @@
       "id": "dependencygraphdependency",
       "href": "/graphql/reference/objects#dependencygraphdependency",
       "description": "<p>A dependency manifest entry.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Access to a repository's dependency graph preview",
-        "description": "This preview adds support for reading a dependency graph for a repository.",
-        "toggled_by": "hawkgirl-preview",
-        "toggled_on": [
-          "DependencyGraphManifest",
-          "Repository.dependencyGraphManifests",
-          "DependencyGraphManifestEdge",
-          "DependencyGraphManifestConnection",
-          "DependencyGraphDependency",
-          "DependencyGraphDependencyEdge",
-          "DependencyGraphDependencyConnection"
-        ],
-        "owning_teams": [
-          "@github/dependency-graph"
-        ],
-        "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
-      },
       "fields": [
         {
           "name": "hasDependencies",
@@ -17368,26 +17603,6 @@
       "id": "dependencygraphdependencyconnection",
       "href": "/graphql/reference/objects#dependencygraphdependencyconnection",
       "description": "<p>The connection type for DependencyGraphDependency.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Access to a repository's dependency graph preview",
-        "description": "This preview adds support for reading a dependency graph for a repository.",
-        "toggled_by": "hawkgirl-preview",
-        "toggled_on": [
-          "DependencyGraphManifest",
-          "Repository.dependencyGraphManifests",
-          "DependencyGraphManifestEdge",
-          "DependencyGraphManifestConnection",
-          "DependencyGraphDependency",
-          "DependencyGraphDependencyEdge",
-          "DependencyGraphDependencyConnection"
-        ],
-        "owning_teams": [
-          "@github/dependency-graph"
-        ],
-        "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
-      },
       "fields": [
         {
           "name": "edges",
@@ -17429,26 +17644,6 @@
       "id": "dependencygraphdependencyedge",
       "href": "/graphql/reference/objects#dependencygraphdependencyedge",
       "description": "<p>An edge in a connection.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Access to a repository's dependency graph preview",
-        "description": "This preview adds support for reading a dependency graph for a repository.",
-        "toggled_by": "hawkgirl-preview",
-        "toggled_on": [
-          "DependencyGraphManifest",
-          "Repository.dependencyGraphManifests",
-          "DependencyGraphManifestEdge",
-          "DependencyGraphManifestConnection",
-          "DependencyGraphDependency",
-          "DependencyGraphDependencyEdge",
-          "DependencyGraphDependencyConnection"
-        ],
-        "owning_teams": [
-          "@github/dependency-graph"
-        ],
-        "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
-      },
       "fields": [
         {
           "name": "cursor",
@@ -17474,26 +17669,6 @@
       "id": "dependencygraphmanifest",
       "href": "/graphql/reference/objects#dependencygraphmanifest",
       "description": "<p>Dependency manifest for a repository.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Access to a repository's dependency graph preview",
-        "description": "This preview adds support for reading a dependency graph for a repository.",
-        "toggled_by": "hawkgirl-preview",
-        "toggled_on": [
-          "DependencyGraphManifest",
-          "Repository.dependencyGraphManifests",
-          "DependencyGraphManifestEdge",
-          "DependencyGraphManifestConnection",
-          "DependencyGraphDependency",
-          "DependencyGraphDependencyEdge",
-          "DependencyGraphDependencyConnection"
-        ],
-        "owning_teams": [
-          "@github/dependency-graph"
-        ],
-        "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
-      },
       "implements": [
         {
           "name": "Node",
@@ -17616,26 +17791,6 @@
       "id": "dependencygraphmanifestconnection",
       "href": "/graphql/reference/objects#dependencygraphmanifestconnection",
       "description": "<p>The connection type for DependencyGraphManifest.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Access to a repository's dependency graph preview",
-        "description": "This preview adds support for reading a dependency graph for a repository.",
-        "toggled_by": "hawkgirl-preview",
-        "toggled_on": [
-          "DependencyGraphManifest",
-          "Repository.dependencyGraphManifests",
-          "DependencyGraphManifestEdge",
-          "DependencyGraphManifestConnection",
-          "DependencyGraphDependency",
-          "DependencyGraphDependencyEdge",
-          "DependencyGraphDependencyConnection"
-        ],
-        "owning_teams": [
-          "@github/dependency-graph"
-        ],
-        "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
-      },
       "fields": [
         {
           "name": "edges",
@@ -17677,26 +17832,6 @@
       "id": "dependencygraphmanifestedge",
       "href": "/graphql/reference/objects#dependencygraphmanifestedge",
       "description": "<p>An edge in a connection.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Access to a repository's dependency graph preview",
-        "description": "This preview adds support for reading a dependency graph for a repository.",
-        "toggled_by": "hawkgirl-preview",
-        "toggled_on": [
-          "DependencyGraphManifest",
-          "Repository.dependencyGraphManifests",
-          "DependencyGraphManifestEdge",
-          "DependencyGraphManifestConnection",
-          "DependencyGraphDependency",
-          "DependencyGraphDependencyEdge",
-          "DependencyGraphDependencyConnection"
-        ],
-        "owning_teams": [
-          "@github/dependency-graph"
-        ],
-        "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
-      },
       "fields": [
         {
           "name": "cursor",
@@ -18846,23 +18981,7 @@
           "type": "String",
           "id": "string",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#string",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Deployments preview",
-            "description": "This preview adds support for deployments mutations and new deployments features.",
-            "toggled_by": "flash-preview",
-            "toggled_on": [
-              "DeploymentStatus.environment",
-              "Mutation.createDeploymentStatus",
-              "Mutation.createDeployment"
-            ],
-            "owning_teams": [
-              "@github/pages"
-            ],
-            "accept_header": "application/vnd.github.flash-preview+json",
-            "href": "/graphql/overview/schema-previews#deployments-preview"
-          }
+          "href": "/graphql/reference/scalars#string"
         },
         {
           "name": "environmentUrl",
@@ -19597,6 +19716,14 @@
         {
           "name": "viewerCanDelete",
           "description": "<p>Check if the current viewer can delete this object.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanLabel",
+          "description": "<p>Indicates if the viewer can edit labels for this object.</p>",
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
@@ -20937,6 +21064,31 @@
       ]
     },
     {
+      "name": "EPSS",
+      "kind": "objects",
+      "id": "epss",
+      "href": "/graphql/reference/objects#epss",
+      "description": "<p>The Exploit Prediction Scoring System.</p>",
+      "fields": [
+        {
+          "name": "percentage",
+          "description": "<p>The EPSS percentage represents the likelihood of a CVE being exploited.</p>",
+          "type": "Float",
+          "id": "float",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#float"
+        },
+        {
+          "name": "percentile",
+          "description": "<p>The EPSS percentile represents the relative rank of the CVE's likelihood of being exploited compared to other CVEs.</p>",
+          "type": "Float",
+          "id": "float",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#float"
+        }
+      ]
+    },
+    {
       "name": "Enterprise",
       "kind": "objects",
       "id": "enterprise",
@@ -20962,6 +21114,14 @@
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "announcementCreatedAt",
+          "description": "<p>The date the announcement was created.</p>",
+          "type": "DateTime",
+          "id": "datetime",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#datetime"
         },
         {
           "name": "announcementExpiresAt",
@@ -21113,7 +21273,7 @@
             },
             {
               "name": "hasTwoFactorEnabled",
-              "description": "<p>Only return members with this two-factor authentication status. Does not\ninclude members who only have an account on a GitHub Enterprise Server instance.</p>",
+              "description": "<p>Only return members with this two-factor authentication status. Does not\ninclude members who only have an account on a GitHub Enterprise Server instance.</p>\n<p><strong>Upcoming Change on 2025-04-01 UTC</strong>\n<strong>Description:</strong> <code>hasTwoFactorEnabled</code> will be removed. Use <code>two_factor_method_security</code> instead.\n<strong>Reason:</strong> <code>has_two_factor_enabled</code> will be removed.</p>",
               "type": {
                 "name": "Boolean",
                 "id": "boolean",
@@ -21169,6 +21329,16 @@
                 "id": "enterpriseuseraccountmembershiprole",
                 "kind": "enums",
                 "href": "/graphql/reference/enums#enterpriseuseraccountmembershiprole"
+              }
+            },
+            {
+              "name": "twoFactorMethodSecurity",
+              "description": "<p>Only return members with this type of two-factor authentication method. Does\nnot include members who only have an account on a GitHub Enterprise Server instance.</p>",
+              "type": {
+                "name": "TwoFactorCredentialSecurityType",
+                "id": "twofactorcredentialsecuritytype",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#twofactorcredentialsecuritytype"
               }
             }
           ]
@@ -21268,6 +21438,22 @@
           "id": "enterpriseownerinfo",
           "kind": "objects",
           "href": "/graphql/reference/objects#enterpriseownerinfo"
+        },
+        {
+          "name": "readme",
+          "description": "<p>The raw content of the enterprise README.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "readmeHTML",
+          "description": "<p>The content of the enterprise README as HTML.</p>",
+          "type": "HTML!",
+          "id": "html",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#html"
         },
         {
           "name": "resourcePath",
@@ -21979,6 +22165,136 @@
       ]
     },
     {
+      "name": "EnterpriseMemberInvitation",
+      "kind": "objects",
+      "id": "enterprisememberinvitation",
+      "href": "/graphql/reference/objects#enterprisememberinvitation",
+      "description": "<p>An invitation for a user to become an unaffiliated member of an enterprise.</p>",
+      "implements": [
+        {
+          "name": "Node",
+          "id": "node",
+          "href": "/graphql/reference/interfaces#node"
+        }
+      ],
+      "fields": [
+        {
+          "name": "createdAt",
+          "description": "<p>Identifies the date and time when the object was created.</p>",
+          "type": "DateTime!",
+          "id": "datetime",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#datetime"
+        },
+        {
+          "name": "email",
+          "description": "<p>The email of the person who was invited to the enterprise.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "enterprise",
+          "description": "<p>The enterprise the invitation is for.</p>",
+          "type": "Enterprise!",
+          "id": "enterprise",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprise"
+        },
+        {
+          "name": "id",
+          "description": "<p>The Node ID of the EnterpriseMemberInvitation object.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id"
+        },
+        {
+          "name": "invitee",
+          "description": "<p>The user who was invited to the enterprise.</p>",
+          "type": "User",
+          "id": "user",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#user"
+        },
+        {
+          "name": "inviter",
+          "description": "<p>The user who created the invitation.</p>",
+          "type": "User",
+          "id": "user",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#user"
+        }
+      ]
+    },
+    {
+      "name": "EnterpriseMemberInvitationConnection",
+      "kind": "objects",
+      "id": "enterprisememberinvitationconnection",
+      "href": "/graphql/reference/objects#enterprisememberinvitationconnection",
+      "description": "<p>The connection type for EnterpriseMemberInvitation.</p>",
+      "fields": [
+        {
+          "name": "edges",
+          "description": "<p>A list of edges.</p>",
+          "type": "[EnterpriseMemberInvitationEdge]",
+          "id": "enterprisememberinvitationedge",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprisememberinvitationedge"
+        },
+        {
+          "name": "nodes",
+          "description": "<p>A list of nodes.</p>",
+          "type": "[EnterpriseMemberInvitation]",
+          "id": "enterprisememberinvitation",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprisememberinvitation"
+        },
+        {
+          "name": "pageInfo",
+          "description": "<p>Information to aid in pagination.</p>",
+          "type": "PageInfo!",
+          "id": "pageinfo",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pageinfo"
+        },
+        {
+          "name": "totalCount",
+          "description": "<p>Identifies the total count of items in the connection.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
+      "name": "EnterpriseMemberInvitationEdge",
+      "kind": "objects",
+      "id": "enterprisememberinvitationedge",
+      "href": "/graphql/reference/objects#enterprisememberinvitationedge",
+      "description": "<p>An edge in a connection.</p>",
+      "fields": [
+        {
+          "name": "cursor",
+          "description": "<p>A cursor for use in pagination.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "node",
+          "description": "<p>The item at the end of the edge.</p>",
+          "type": "EnterpriseMemberInvitation",
+          "id": "enterprisememberinvitation",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprisememberinvitation"
+        }
+      ]
+    },
+    {
       "name": "EnterpriseOrganizationMembershipConnection",
       "kind": "objects",
       "id": "enterpriseorganizationmembershipconnection",
@@ -22225,7 +22541,7 @@
             },
             {
               "name": "hasTwoFactorEnabled",
-              "description": "<p>Only return administrators with this two-factor authentication status.</p>",
+              "description": "<p>Only return administrators with this two-factor authentication status.</p>\n<p><strong>Upcoming Change on 2025-04-01 UTC</strong>\n<strong>Description:</strong> <code>hasTwoFactorEnabled</code> will be removed. Use <code>two_factor_method_security</code> instead.\n<strong>Reason:</strong> <code>has_two_factor_enabled</code> will be removed.</p>",
               "type": {
                 "name": "Boolean",
                 "id": "boolean",
@@ -22281,6 +22597,16 @@
                 "id": "enterpriseadministratorrole",
                 "kind": "enums",
                 "href": "/graphql/reference/enums#enterpriseadministratorrole"
+              }
+            },
+            {
+              "name": "twoFactorMethodSecurity",
+              "description": "<p>Only return outside collaborators with this type of two-factor authentication method.</p>",
+              "type": {
+                "name": "TwoFactorCredentialSecurityType",
+                "id": "twofactorcredentialsecuritytype",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#twofactorcredentialsecuritytype"
               }
             }
           ]
@@ -23522,7 +23848,7 @@
             },
             {
               "name": "hasTwoFactorEnabled",
-              "description": "<p>Only return outside collaborators with this two-factor authentication status.</p>",
+              "description": "<p>Only return outside collaborators with this two-factor authentication status.</p>\n<p><strong>Upcoming Change on 2025-04-01 UTC</strong>\n<strong>Description:</strong> <code>hasTwoFactorEnabled</code> will be removed. Use <code>two_factor_method_security</code> instead.\n<strong>Reason:</strong> <code>has_two_factor_enabled</code> will be removed.</p>",
               "type": {
                 "name": "Boolean",
                 "id": "boolean",
@@ -23578,6 +23904,16 @@
                 "id": "string",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "twoFactorMethodSecurity",
+              "description": "<p>Only return outside collaborators with this type of two-factor authentication method.</p>",
+              "type": {
+                "name": "TwoFactorCredentialSecurityType",
+                "id": "twofactorcredentialsecuritytype",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#twofactorcredentialsecuritytype"
               }
             },
             {
@@ -23808,6 +24144,76 @@
                 "id": "string",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "query",
+              "description": "<p>The search string to look for.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "pendingUnaffiliatedMemberInvitations",
+          "description": "<p>A list of pending unaffiliated member invitations for the enterprise.</p>",
+          "type": "EnterpriseMemberInvitationConnection!",
+          "id": "enterprisememberinvitationconnection",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#enterprisememberinvitationconnection",
+          "arguments": [
+            {
+              "name": "after",
+              "description": "<p>Returns the elements in the list that come after the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "before",
+              "description": "<p>Returns the elements in the list that come before the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "first",
+              "description": "<p>Returns the first <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "last",
+              "description": "<p>Returns the last <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "orderBy",
+              "description": "<p>Ordering options for pending enterprise member invitations returned from the connection.</p>",
+              "type": {
+                "name": "EnterpriseMemberInvitationOrder",
+                "id": "enterprisememberinvitationorder",
+                "kind": "input-objects",
+                "href": "/graphql/reference/input-objects#enterprisememberinvitationorder"
               }
             },
             {
@@ -24115,6 +24521,14 @@
               }
             }
           ]
+        },
+        {
+          "name": "twoFactorDisallowedMethodsSetting",
+          "description": "<p>The setting value for what methods of two-factor authentication the enterprise prevents its users from having.</p>",
+          "type": "EnterpriseDisallowedMethodsSettingValue!",
+          "id": "enterprisedisallowedmethodssettingvalue",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#enterprisedisallowedmethodssettingvalue"
         },
         {
           "name": "twoFactorRequiredSetting",
@@ -25494,12 +25908,36 @@
           "href": "/graphql/reference/scalars#id"
         },
         {
+          "name": "isPinned",
+          "description": "<p>Indicates whether or not this environment is currently pinned to the repository.</p>",
+          "type": "Boolean",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "latestCompletedDeployment",
+          "description": "<p>The latest completed deployment with status success, failure, or error if it exists.</p>",
+          "type": "Deployment",
+          "id": "deployment",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#deployment"
+        },
+        {
           "name": "name",
           "description": "<p>The name of the environment.</p>",
           "type": "String!",
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "pinnedPosition",
+          "description": "<p>The position of the environment if it is pinned, null if it is not pinned.</p>",
+          "type": "Int",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
         },
         {
           "name": "protectionRules",
@@ -25890,6 +26328,40 @@
           "name": "username",
           "description": "<p>The userName of the SCIM identity.</p>",
           "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        }
+      ]
+    },
+    {
+      "name": "FileExtensionRestrictionParameters",
+      "kind": "objects",
+      "id": "fileextensionrestrictionparameters",
+      "href": "/graphql/reference/objects#fileextensionrestrictionparameters",
+      "description": "<p>Prevent commits that include files with specified file extensions from being pushed to the commit graph.</p>",
+      "fields": [
+        {
+          "name": "restrictedFileExtensions",
+          "description": "<p>The file extensions that are restricted from being pushed to the commit graph.</p>",
+          "type": "[String!]!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        }
+      ]
+    },
+    {
+      "name": "FilePathRestrictionParameters",
+      "kind": "objects",
+      "id": "filepathrestrictionparameters",
+      "href": "/graphql/reference/objects#filepathrestrictionparameters",
+      "description": "<p>Prevent commits that include changes in specified file paths from being pushed to the commit graph.</p>",
+      "fields": [
+        {
+          "name": "restrictedFilePaths",
+          "description": "<p>The file paths that are restricted from being pushed to the commit graph.</p>",
+          "type": "[String!]!",
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
@@ -27684,6 +28156,89 @@
           "href": "/graphql/reference/scalars#datetime"
         },
         {
+          "name": "closedByPullRequestsReferences",
+          "description": "<p>List of open pull requests referenced from this issue.</p>",
+          "type": "PullRequestConnection",
+          "id": "pullrequestconnection",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pullrequestconnection",
+          "arguments": [
+            {
+              "name": "after",
+              "description": "<p>Returns the elements in the list that come after the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "before",
+              "description": "<p>Returns the elements in the list that come before the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "first",
+              "description": "<p>Returns the first <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "includeClosedPrs",
+              "defaultValue": false,
+              "description": "<p>Include closed PRs in results.</p>",
+              "type": {
+                "name": "Boolean",
+                "id": "boolean",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#boolean"
+              }
+            },
+            {
+              "name": "last",
+              "description": "<p>Returns the last <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "orderByState",
+              "defaultValue": false,
+              "description": "<p>Return results ordered by state.</p>",
+              "type": {
+                "name": "Boolean",
+                "id": "boolean",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#boolean"
+              }
+            },
+            {
+              "name": "userLinkedOnly",
+              "defaultValue": false,
+              "description": "<p>Return only manually linked PRs.</p>",
+              "type": {
+                "name": "Boolean",
+                "id": "boolean",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#boolean"
+              }
+            }
+          ]
+        },
+        {
           "name": "comments",
           "description": "<p>A list of comments associated with the Issue.</p>",
           "type": "IssueCommentConnection!",
@@ -28218,6 +28773,17 @@
               }
             },
             {
+              "name": "minPermissionLevel",
+              "defaultValue": "READ",
+              "description": "<p>Filter projects based on user role.</p>",
+              "type": {
+                "name": "ProjectV2PermissionLevel",
+                "id": "projectv2permissionlevel",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#projectv2permissionlevel"
+              }
+            },
+            {
               "name": "orderBy",
               "description": "<p>How to order the returned projects.</p>",
               "type": {
@@ -28712,6 +29278,14 @@
         {
           "name": "viewerCanDelete",
           "description": "<p>Check if the current viewer can delete this object.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanLabel",
+          "description": "<p>Indicates if the viewer can edit labels for this object.</p>",
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
@@ -31507,6 +32081,40 @@
       ]
     },
     {
+      "name": "MaxFilePathLengthParameters",
+      "kind": "objects",
+      "id": "maxfilepathlengthparameters",
+      "href": "/graphql/reference/objects#maxfilepathlengthparameters",
+      "description": "<p>Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph.</p>",
+      "fields": [
+        {
+          "name": "maxFilePathLength",
+          "description": "<p>The maximum amount of characters allowed in file paths.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
+      "name": "MaxFileSizeParameters",
+      "kind": "objects",
+      "id": "maxfilesizeparameters",
+      "href": "/graphql/reference/objects#maxfilesizeparameters",
+      "description": "<p>Prevent commits that exceed a specified file size limit from being pushed to the commit.</p>",
+      "fields": [
+        {
+          "name": "maxFileSize",
+          "description": "<p>The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
       "name": "MemberFeatureRequestNotification",
       "kind": "objects",
       "id": "memberfeaturerequestnotification",
@@ -31522,7 +32130,7 @@
       "fields": [
         {
           "name": "body",
-          "description": "<p>Represents member feature request body containing organization name and the number of feature requests.</p>",
+          "description": "<p>Represents member feature request body containing entity name and the number of feature requests.</p>",
           "type": "String!",
           "id": "string",
           "kind": "scalars",
@@ -32557,6 +33165,71 @@
       ]
     },
     {
+      "name": "MergeQueueParameters",
+      "kind": "objects",
+      "id": "mergequeueparameters",
+      "href": "/graphql/reference/objects#mergequeueparameters",
+      "description": "<p>Merges must be performed via a merge queue.</p>",
+      "fields": [
+        {
+          "name": "checkResponseTimeoutMinutes",
+          "description": "<p>Maximum time for a required status check to report a conclusion. After this\nmuch time has elapsed, checks that have not reported a conclusion will be\nassumed to have failed.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "groupingStrategy",
+          "description": "<p>When set to ALLGREEN, the merge commit created by merge queue for each PR in\nthe group must pass all required checks to merge. When set to HEADGREEN, only\nthe commit at the head of the merge group, i.e. the commit containing changes\nfrom all of the PRs in the group, must pass its required checks to merge.</p>",
+          "type": "MergeQueueGroupingStrategy!",
+          "id": "mergequeuegroupingstrategy",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#mergequeuegroupingstrategy"
+        },
+        {
+          "name": "maxEntriesToBuild",
+          "description": "<p>Limit the number of queued pull requests requesting checks and workflow runs at the same time.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "maxEntriesToMerge",
+          "description": "<p>The maximum number of PRs that will be merged together in a group.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "mergeMethod",
+          "description": "<p>Method to use when merging changes from queued pull requests.</p>",
+          "type": "MergeQueueMergeMethod!",
+          "id": "mergequeuemergemethod",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#mergequeuemergemethod"
+        },
+        {
+          "name": "minEntriesToMerge",
+          "description": "<p>The minimum number of PRs that will be merged together in a group.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "minEntriesToMergeWaitMinutes",
+          "description": "<p>The time merge queue should wait after the first PR is added to the queue for\nthe minimum group size to be met. After this time has elapsed, the minimum\ngroup size will be ignored and a smaller group will be merged.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
       "name": "MergedEvent",
       "kind": "objects",
       "id": "mergedevent",
@@ -33223,32 +33896,7 @@
           "type": "String!",
           "id": "string",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#string",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/scalars#string"
         },
         {
           "name": "project",
@@ -33256,32 +33904,7 @@
           "type": "Project",
           "id": "project",
           "kind": "objects",
-          "href": "/graphql/reference/objects#project",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/objects#project"
         },
         {
           "name": "projectCard",
@@ -33289,32 +33912,7 @@
           "type": "ProjectCard",
           "id": "projectcard",
           "kind": "objects",
-          "href": "/graphql/reference/objects#projectcard",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/objects#projectcard"
         },
         {
           "name": "projectColumnName",
@@ -33322,32 +33920,7 @@
           "type": "String!",
           "id": "string",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#string",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/scalars#string"
         }
       ]
     },
@@ -39196,6 +39769,14 @@
           "href": "/graphql/reference/scalars#string"
         },
         {
+          "name": "announcementCreatedAt",
+          "description": "<p>The date the announcement was created.</p>",
+          "type": "DateTime",
+          "id": "datetime",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#datetime"
+        },
+        {
           "name": "announcementExpiresAt",
           "description": "<p>The expiration date of the announcement, if any.</p>",
           "type": "DateTime",
@@ -40446,6 +41027,17 @@
               }
             },
             {
+              "name": "minPermissionLevel",
+              "defaultValue": "READ",
+              "description": "<p>Filter projects based on user role.</p>",
+              "type": {
+                "name": "ProjectV2PermissionLevel",
+                "id": "projectv2permissionlevel",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#projectv2permissionlevel"
+              }
+            },
+            {
               "name": "orderBy",
               "description": "<p>How to order the returned projects.</p>",
               "type": {
@@ -40962,6 +41554,17 @@
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#int"
               }
+            },
+            {
+              "name": "includeParents",
+              "defaultValue": true,
+              "description": "<p>Include rulesets configured at higher levels that apply to this organization.</p>",
+              "type": {
+                "name": "Boolean",
+                "id": "boolean",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#boolean"
+              }
             }
           ]
         },
@@ -41022,6 +41625,16 @@
                 "id": "int",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "targets",
+              "description": "<p>Return rulesets that apply to the specified target.</p>",
+              "type": {
+                "name": "[RepositoryRulesetTarget!]",
+                "id": "repositoryrulesettarget",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#repositoryrulesettarget"
               }
             }
           ]
@@ -43755,6 +44368,136 @@
       ]
     },
     {
+      "name": "PinnedEnvironment",
+      "kind": "objects",
+      "id": "pinnedenvironment",
+      "href": "/graphql/reference/objects#pinnedenvironment",
+      "description": "<p>Represents a pinned environment on a given repository.</p>",
+      "implements": [
+        {
+          "name": "Node",
+          "id": "node",
+          "href": "/graphql/reference/interfaces#node"
+        }
+      ],
+      "fields": [
+        {
+          "name": "createdAt",
+          "description": "<p>Identifies the date and time when the pinned environment was created.</p>",
+          "type": "DateTime!",
+          "id": "datetime",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#datetime"
+        },
+        {
+          "name": "databaseId",
+          "description": "<p>Identifies the primary key from the database.</p>",
+          "type": "Int",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "environment",
+          "description": "<p>Identifies the environment associated.</p>",
+          "type": "Environment!",
+          "id": "environment",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#environment"
+        },
+        {
+          "name": "id",
+          "description": "<p>The Node ID of the PinnedEnvironment object.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id"
+        },
+        {
+          "name": "position",
+          "description": "<p>Identifies the position of the pinned environment.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "repository",
+          "description": "<p>The repository that this environment was pinned to.</p>",
+          "type": "Repository!",
+          "id": "repository",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#repository"
+        }
+      ]
+    },
+    {
+      "name": "PinnedEnvironmentConnection",
+      "kind": "objects",
+      "id": "pinnedenvironmentconnection",
+      "href": "/graphql/reference/objects#pinnedenvironmentconnection",
+      "description": "<p>The connection type for PinnedEnvironment.</p>",
+      "fields": [
+        {
+          "name": "edges",
+          "description": "<p>A list of edges.</p>",
+          "type": "[PinnedEnvironmentEdge]",
+          "id": "pinnedenvironmentedge",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pinnedenvironmentedge"
+        },
+        {
+          "name": "nodes",
+          "description": "<p>A list of nodes.</p>",
+          "type": "[PinnedEnvironment]",
+          "id": "pinnedenvironment",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pinnedenvironment"
+        },
+        {
+          "name": "pageInfo",
+          "description": "<p>Information to aid in pagination.</p>",
+          "type": "PageInfo!",
+          "id": "pageinfo",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pageinfo"
+        },
+        {
+          "name": "totalCount",
+          "description": "<p>Identifies the total count of items in the connection.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
+      "name": "PinnedEnvironmentEdge",
+      "kind": "objects",
+      "id": "pinnedenvironmentedge",
+      "href": "/graphql/reference/objects#pinnedenvironmentedge",
+      "description": "<p>An edge in a connection.</p>",
+      "fields": [
+        {
+          "name": "cursor",
+          "description": "<p>A cursor for use in pagination.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "node",
+          "description": "<p>The item at the end of the edge.</p>",
+          "type": "PinnedEnvironment",
+          "id": "pinnedenvironment",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pinnedenvironment"
+        }
+      ]
+    },
+    {
       "name": "PinnedEvent",
       "kind": "objects",
       "id": "pinnedevent",
@@ -45352,7 +46095,9 @@
           "type": "Int",
           "id": "int",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#int"
+          "href": "/graphql/reference/scalars#int",
+          "isDeprecated": true,
+          "deprecationReason": "<p><code>databaseId</code> will be removed because it does not support 64-bit signed integer identifiers. Use <code>fullDatabaseId</code> instead. Removal on 2025-04-01 UTC.</p>"
         },
         {
           "name": "field",
@@ -45433,6 +46178,14 @@
               }
             }
           ]
+        },
+        {
+          "name": "fullDatabaseId",
+          "description": "<p>Identifies the primary key from the database as a BigInt.</p>",
+          "type": "BigInt",
+          "id": "bigint",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#bigint"
         },
         {
           "name": "id",
@@ -45609,6 +46362,66 @@
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "statusUpdates",
+          "description": "<p>List of the status updates in the project.</p>",
+          "type": "ProjectV2StatusUpdateConnection!",
+          "id": "projectv2statusupdateconnection",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2statusupdateconnection",
+          "arguments": [
+            {
+              "name": "after",
+              "description": "<p>Returns the elements in the list that come after the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "before",
+              "description": "<p>Returns the elements in the list that come before the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "first",
+              "description": "<p>Returns the first <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "last",
+              "description": "<p>Returns the last <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "orderBy",
+              "description": "<p>Order for connection.</p>",
+              "type": {
+                "name": "ProjectV2StatusOrder",
+                "id": "projectv2statusorder",
+                "kind": "input-objects",
+                "href": "/graphql/reference/input-objects#projectv2statusorder"
+              }
+            }
+          ]
         },
         {
           "name": "teams",
@@ -46273,7 +47086,9 @@
           "type": "Int",
           "id": "int",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#int"
+          "href": "/graphql/reference/scalars#int",
+          "isDeprecated": true,
+          "deprecationReason": "<p><code>databaseId</code> will be removed because it does not support 64-bit signed integer identifiers. Use <code>fullDatabaseId</code> instead. Removal on 2025-04-01 UTC.</p>"
         },
         {
           "name": "fieldValueByName",
@@ -47874,6 +48689,186 @@
       ]
     },
     {
+      "name": "ProjectV2StatusUpdate",
+      "kind": "objects",
+      "id": "projectv2statusupdate",
+      "href": "/graphql/reference/objects#projectv2statusupdate",
+      "description": "<p>A status update within a project.</p>",
+      "implements": [
+        {
+          "name": "Node",
+          "id": "node",
+          "href": "/graphql/reference/interfaces#node"
+        }
+      ],
+      "fields": [
+        {
+          "name": "body",
+          "description": "<p>The body of the status update.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "bodyHTML",
+          "description": "<p>The body of the status update rendered to HTML.</p>",
+          "type": "HTML",
+          "id": "html",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#html"
+        },
+        {
+          "name": "createdAt",
+          "description": "<p>Identifies the date and time when the object was created.</p>",
+          "type": "DateTime!",
+          "id": "datetime",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#datetime"
+        },
+        {
+          "name": "creator",
+          "description": "<p>The actor who created the status update.</p>",
+          "type": "Actor",
+          "id": "actor",
+          "kind": "interfaces",
+          "href": "/graphql/reference/interfaces#actor"
+        },
+        {
+          "name": "databaseId",
+          "description": "<p>Identifies the primary key from the database.</p>",
+          "type": "Int",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int",
+          "isDeprecated": true,
+          "deprecationReason": "<p><code>databaseId</code> will be removed because it does not support 64-bit signed integer identifiers. Use <code>fullDatabaseId</code> instead. Removal on 2025-04-01 UTC.</p>"
+        },
+        {
+          "name": "fullDatabaseId",
+          "description": "<p>Identifies the primary key from the database as a BigInt.</p>",
+          "type": "BigInt",
+          "id": "bigint",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#bigint"
+        },
+        {
+          "name": "id",
+          "description": "<p>The Node ID of the ProjectV2StatusUpdate object.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id"
+        },
+        {
+          "name": "project",
+          "description": "<p>The project that contains this status update.</p>",
+          "type": "ProjectV2!",
+          "id": "projectv2",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2"
+        },
+        {
+          "name": "startDate",
+          "description": "<p>The start date of the status update.</p>",
+          "type": "Date",
+          "id": "date",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#date"
+        },
+        {
+          "name": "status",
+          "description": "<p>The status of the status update.</p>",
+          "type": "ProjectV2StatusUpdateStatus",
+          "id": "projectv2statusupdatestatus",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#projectv2statusupdatestatus"
+        },
+        {
+          "name": "targetDate",
+          "description": "<p>The target date of the status update.</p>",
+          "type": "Date",
+          "id": "date",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#date"
+        },
+        {
+          "name": "updatedAt",
+          "description": "<p>Identifies the date and time when the object was last updated.</p>",
+          "type": "DateTime!",
+          "id": "datetime",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#datetime"
+        }
+      ]
+    },
+    {
+      "name": "ProjectV2StatusUpdateConnection",
+      "kind": "objects",
+      "id": "projectv2statusupdateconnection",
+      "href": "/graphql/reference/objects#projectv2statusupdateconnection",
+      "description": "<p>The connection type for ProjectV2StatusUpdate.</p>",
+      "fields": [
+        {
+          "name": "edges",
+          "description": "<p>A list of edges.</p>",
+          "type": "[ProjectV2StatusUpdateEdge]",
+          "id": "projectv2statusupdateedge",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2statusupdateedge"
+        },
+        {
+          "name": "nodes",
+          "description": "<p>A list of nodes.</p>",
+          "type": "[ProjectV2StatusUpdate]",
+          "id": "projectv2statusupdate",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2statusupdate"
+        },
+        {
+          "name": "pageInfo",
+          "description": "<p>Information to aid in pagination.</p>",
+          "type": "PageInfo!",
+          "id": "pageinfo",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pageinfo"
+        },
+        {
+          "name": "totalCount",
+          "description": "<p>Identifies the total count of items in the connection.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
+      "name": "ProjectV2StatusUpdateEdge",
+      "kind": "objects",
+      "id": "projectv2statusupdateedge",
+      "href": "/graphql/reference/objects#projectv2statusupdateedge",
+      "description": "<p>An edge in a connection.</p>",
+      "fields": [
+        {
+          "name": "cursor",
+          "description": "<p>A cursor for use in pagination.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "node",
+          "description": "<p>The item at the end of the edge.</p>",
+          "type": "ProjectV2StatusUpdate",
+          "id": "projectv2statusupdate",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#projectv2statusupdate"
+        }
+      ]
+    },
+    {
       "name": "ProjectV2View",
       "kind": "objects",
       "id": "projectv2view",
@@ -47901,7 +48896,9 @@
           "type": "Int",
           "id": "int",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#int"
+          "href": "/graphql/reference/scalars#int",
+          "isDeprecated": true,
+          "deprecationReason": "<p><code>databaseId</code> will be removed because it does not support 64-bit signed integer identifiers. Use <code>fullDatabaseId</code> instead. Removal on 2025-04-01 UTC.</p>"
         },
         {
           "name": "fields",
@@ -47970,6 +48967,14 @@
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "fullDatabaseId",
+          "description": "<p>Identifies the primary key from the database as a BigInt.</p>",
+          "type": "BigInt",
+          "id": "bigint",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#bigint"
         },
         {
           "name": "groupBy",
@@ -48523,7 +49528,9 @@
           "type": "Int",
           "id": "int",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#int"
+          "href": "/graphql/reference/scalars#int",
+          "isDeprecated": true,
+          "deprecationReason": "<p><code>databaseId</code> will be removed because it does not support 64-bit signed integer identifiers. Use <code>fullDatabaseId</code> instead. Removal on 2025-04-01 UTC.</p>"
         },
         {
           "name": "enabled",
@@ -48532,6 +49539,14 @@
           "id": "boolean",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "fullDatabaseId",
+          "description": "<p>Identifies the primary key from the database as a BigInt.</p>",
+          "type": "BigInt",
+          "id": "bigint",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#bigint"
         },
         {
           "name": "id",
@@ -48660,6 +49675,14 @@
           "name": "propertyValues",
           "description": "<p>The values to match for.</p>",
           "type": "[String!]!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "source",
+          "description": "<p>The source of the property. Choose<code>custom</code>or 'system'. Defaults to 'custom' if not specified.</p>",
+          "type": "String",
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
@@ -49030,22 +50053,7 @@
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#boolean",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Merge info preview more detailed information about a pull request's merge state preview",
-            "description": "This preview adds support for accessing fields that provide more detailed information about a pull request's merge state.",
-            "toggled_by": "merge-info-preview",
-            "toggled_on": [
-              "PullRequest.canBeRebased",
-              "PullRequest.mergeStateStatus"
-            ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
-            "accept_header": "application/vnd.github.merge-info-preview+json",
-            "href": "/graphql/overview/schema-previews#merge-info-preview-more-detailed-information-about-a-pull-requests-merge-state-preview"
-          }
+          "href": "/graphql/reference/scalars#boolean"
         },
         {
           "name": "changedFiles",
@@ -49089,7 +50097,7 @@
         },
         {
           "name": "closingIssuesReferences",
-          "description": "<p>List of issues that were may be closed by this pull request.</p>",
+          "description": "<p>List of issues that may be closed by this pull request.</p>",
           "type": "IssueConnection",
           "id": "issueconnection",
           "kind": "objects",
@@ -49710,22 +50718,7 @@
           "type": "MergeStateStatus!",
           "id": "mergestatestatus",
           "kind": "enums",
-          "href": "/graphql/reference/enums#mergestatestatus",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Merge info preview more detailed information about a pull request's merge state preview",
-            "description": "This preview adds support for accessing fields that provide more detailed information about a pull request's merge state.",
-            "toggled_by": "merge-info-preview",
-            "toggled_on": [
-              "PullRequest.canBeRebased",
-              "PullRequest.mergeStateStatus"
-            ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
-            "accept_header": "application/vnd.github.merge-info-preview+json",
-            "href": "/graphql/overview/schema-previews#merge-info-preview-more-detailed-information-about-a-pull-requests-merge-state-preview"
-          }
+          "href": "/graphql/reference/enums#mergestatestatus"
         },
         {
           "name": "mergeable",
@@ -50028,6 +51021,17 @@
                 "id": "int",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "minPermissionLevel",
+              "defaultValue": "READ",
+              "description": "<p>Filter projects based on user role.</p>",
+              "type": {
+                "name": "ProjectV2PermissionLevel",
+                "id": "projectv2permissionlevel",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#projectv2permissionlevel"
               }
             },
             {
@@ -50647,6 +51651,14 @@
         {
           "name": "viewerCanEnableAutoMerge",
           "description": "<p>Whether or not the viewer can enable auto-merge.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanLabel",
+          "description": "<p>Indicates if the viewer can edit labels for this object.</p>",
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
@@ -55322,32 +56334,7 @@
           "type": "Project",
           "id": "project",
           "kind": "objects",
-          "href": "/graphql/reference/objects#project",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/objects#project"
         },
         {
           "name": "projectColumnName",
@@ -55355,32 +56342,7 @@
           "type": "String!",
           "id": "string",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#string",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Project event details preview",
-            "description": "This preview adds project, project card, and project column details to project-related issue events.",
-            "toggled_by": "starfox-preview",
-            "toggled_on": [
-              "AddedToProjectEvent.project",
-              "AddedToProjectEvent.projectCard",
-              "AddedToProjectEvent.projectColumnName",
-              "ConvertedNoteToIssueEvent.project",
-              "ConvertedNoteToIssueEvent.projectCard",
-              "ConvertedNoteToIssueEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.project",
-              "MovedColumnsInProjectEvent.projectCard",
-              "MovedColumnsInProjectEvent.projectColumnName",
-              "MovedColumnsInProjectEvent.previousProjectColumnName",
-              "RemovedFromProjectEvent.project",
-              "RemovedFromProjectEvent.projectColumnName"
-            ],
-            "owning_teams": [
-              "@github/github-projects"
-            ],
-            "accept_header": "application/vnd.github.starfox-preview+json",
-            "href": "/graphql/overview/schema-previews#project-event-details-preview"
-          }
+          "href": "/graphql/reference/scalars#string"
         }
       ]
     },
@@ -60026,27 +60988,7 @@
                 "href": "/graphql/reference/scalars#boolean"
               }
             }
-          ],
-          "isDeprecated": false,
-          "preview": {
-            "title": "Access to a repository's dependency graph preview",
-            "description": "This preview adds support for reading a dependency graph for a repository.",
-            "toggled_by": "hawkgirl-preview",
-            "toggled_on": [
-              "DependencyGraphManifest",
-              "Repository.dependencyGraphManifests",
-              "DependencyGraphManifestEdge",
-              "DependencyGraphManifestConnection",
-              "DependencyGraphDependency",
-              "DependencyGraphDependencyEdge",
-              "DependencyGraphDependencyConnection"
-            ],
-            "owning_teams": [
-              "@github/dependency-graph"
-            ],
-            "accept_header": "application/vnd.github.hawkgirl-preview+json",
-            "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
-          }
+          ]
         },
         {
           "name": "deployKeys",
@@ -60469,6 +61411,17 @@
                 "id": "environments",
                 "kind": "input-objects",
                 "href": "/graphql/reference/input-objects#environments"
+              }
+            },
+            {
+              "name": "pinnedEnvironmentFilter",
+              "defaultValue": "ALL",
+              "description": "<p>Filter to control pinned environments return.</p>",
+              "type": {
+                "name": "EnvironmentPinnedFilterField",
+                "id": "environmentpinnedfilterfield",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#environmentpinnedfilterfield"
               }
             }
           ]
@@ -61520,6 +62473,66 @@
           ]
         },
         {
+          "name": "pinnedEnvironments",
+          "description": "<p>A list of pinned environments for this repository.</p>",
+          "type": "PinnedEnvironmentConnection",
+          "id": "pinnedenvironmentconnection",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pinnedenvironmentconnection",
+          "arguments": [
+            {
+              "name": "after",
+              "description": "<p>Returns the elements in the list that come after the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "before",
+              "description": "<p>Returns the elements in the list that come before the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "first",
+              "description": "<p>Returns the first <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "last",
+              "description": "<p>Returns the last <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "orderBy",
+              "description": "<p>Ordering options for the environments.</p>",
+              "type": {
+                "name": "PinnedEnvironmentOrder",
+                "id": "pinnedenvironmentorder",
+                "kind": "input-objects",
+                "href": "/graphql/reference/input-objects#pinnedenvironmentorder"
+              }
+            }
+          ]
+        },
+        {
           "name": "pinnedIssues",
           "description": "<p>A list of pinned issues for this repository.</p>",
           "type": "PinnedIssueConnection",
@@ -61767,6 +62780,17 @@
                 "id": "int",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "minPermissionLevel",
+              "defaultValue": "READ",
+              "description": "<p>Filter projects based on user role.</p>",
+              "type": {
+                "name": "ProjectV2PermissionLevel",
+                "id": "projectv2permissionlevel",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#projectv2permissionlevel"
               }
             },
             {
@@ -62321,6 +63345,16 @@
                 "id": "int",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "targets",
+              "description": "<p>Return rulesets that apply to the specified target.</p>",
+              "type": {
+                "name": "[RepositoryRulesetTarget!]",
+                "id": "repositoryrulesettarget",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#repositoryrulesettarget"
               }
             }
           ]
@@ -63917,6 +64951,22 @@
           "href": "/graphql/reference/enums#repositoryrulesetbypassactorbypassmode"
         },
         {
+          "name": "deployKey",
+          "description": "<p>This actor represents the ability for a deploy key to bypass.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "enterpriseOwner",
+          "description": "<p>This actor represents the ability for an enterprise owner to bypass.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "id",
           "description": "<p>The Node ID of the RepositoryRulesetBypassActor object.</p>",
           "type": "ID!",
@@ -64954,6 +66004,14 @@
       "description": "<p>Choose which status checks must pass before the ref is updated. When enabled,\ncommits must first be pushed to another ref where the checks pass.</p>",
       "fields": [
         {
+          "name": "doNotEnforceOnCreate",
+          "description": "<p>Allow repositories and branches to be created if a check would otherwise prohibit it.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "requiredStatusChecks",
           "description": "<p>Status checks that are required.</p>",
           "type": "[StatusCheckConfiguration!]!",
@@ -65796,7 +66854,9 @@
           "type": "CVSS!",
           "id": "cvss",
           "kind": "objects",
-          "href": "/graphql/reference/objects#cvss"
+          "href": "/graphql/reference/objects#cvss",
+          "isDeprecated": true,
+          "deprecationReason": "<p><code>cvss</code> will be removed. New <code>cvss_severities</code> field will now contain both <code>cvss_v3</code> and <code>cvss_v4</code> properties. Removal on 2025-10-01 UTC.</p>"
         },
         {
           "name": "cwes",
@@ -65863,6 +66923,14 @@
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "epss",
+          "description": "<p>The Exploit Prediction Scoring System.</p>",
+          "type": "EPSS",
+          "id": "epss",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#epss"
         },
         {
           "name": "ghsaId",
@@ -69766,6 +70834,17 @@
               }
             },
             {
+              "name": "minPermissionLevel",
+              "defaultValue": "READ",
+              "description": "<p>Filter projects based on user role.</p>",
+              "type": {
+                "name": "ProjectV2PermissionLevel",
+                "id": "projectv2permissionlevel",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#projectv2permissionlevel"
+              }
+            },
+            {
               "name": "orderBy",
               "description": "<p>How to order the returned projects.</p>",
               "type": {
@@ -69888,26 +70967,7 @@
           "type": "TeamReviewAssignmentAlgorithm",
           "id": "teamreviewassignmentalgorithm",
           "kind": "enums",
-          "href": "/graphql/reference/enums#teamreviewassignmentalgorithm",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Team review assignments preview",
-            "description": "This preview adds support for updating the settings for team review assignment.",
-            "toggled_by": "stone-crop-preview",
-            "toggled_on": [
-              "Mutation.updateTeamReviewAssignment",
-              "TeamReviewAssignmentAlgorithm",
-              "Team.reviewRequestDelegationEnabled",
-              "Team.reviewRequestDelegationAlgorithm",
-              "Team.reviewRequestDelegationMemberCount",
-              "Team.reviewRequestDelegationNotifyTeam"
-            ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
-            "accept_header": "application/vnd.github.stone-crop-preview+json",
-            "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
-          }
+          "href": "/graphql/reference/enums#teamreviewassignmentalgorithm"
         },
         {
           "name": "reviewRequestDelegationEnabled",
@@ -69915,26 +70975,7 @@
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#boolean",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Team review assignments preview",
-            "description": "This preview adds support for updating the settings for team review assignment.",
-            "toggled_by": "stone-crop-preview",
-            "toggled_on": [
-              "Mutation.updateTeamReviewAssignment",
-              "TeamReviewAssignmentAlgorithm",
-              "Team.reviewRequestDelegationEnabled",
-              "Team.reviewRequestDelegationAlgorithm",
-              "Team.reviewRequestDelegationMemberCount",
-              "Team.reviewRequestDelegationNotifyTeam"
-            ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
-            "accept_header": "application/vnd.github.stone-crop-preview+json",
-            "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
-          }
+          "href": "/graphql/reference/scalars#boolean"
         },
         {
           "name": "reviewRequestDelegationMemberCount",
@@ -69942,26 +70983,7 @@
           "type": "Int",
           "id": "int",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#int",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Team review assignments preview",
-            "description": "This preview adds support for updating the settings for team review assignment.",
-            "toggled_by": "stone-crop-preview",
-            "toggled_on": [
-              "Mutation.updateTeamReviewAssignment",
-              "TeamReviewAssignmentAlgorithm",
-              "Team.reviewRequestDelegationEnabled",
-              "Team.reviewRequestDelegationAlgorithm",
-              "Team.reviewRequestDelegationMemberCount",
-              "Team.reviewRequestDelegationNotifyTeam"
-            ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
-            "accept_header": "application/vnd.github.stone-crop-preview+json",
-            "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
-          }
+          "href": "/graphql/reference/scalars#int"
         },
         {
           "name": "reviewRequestDelegationNotifyTeam",
@@ -69969,26 +70991,7 @@
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
-          "href": "/graphql/reference/scalars#boolean",
-          "isDeprecated": false,
-          "preview": {
-            "title": "Team review assignments preview",
-            "description": "This preview adds support for updating the settings for team review assignment.",
-            "toggled_by": "stone-crop-preview",
-            "toggled_on": [
-              "Mutation.updateTeamReviewAssignment",
-              "TeamReviewAssignmentAlgorithm",
-              "Team.reviewRequestDelegationEnabled",
-              "Team.reviewRequestDelegationAlgorithm",
-              "Team.reviewRequestDelegationMemberCount",
-              "Team.reviewRequestDelegationNotifyTeam"
-            ],
-            "owning_teams": [
-              "@github/pe-pull-requests"
-            ],
-            "accept_header": "application/vnd.github.stone-crop-preview+json",
-            "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
-          }
+          "href": "/graphql/reference/scalars#boolean"
         },
         {
           "name": "slug",
@@ -73804,6 +74807,14 @@
           ]
         },
         {
+          "name": "copilotEndpoints",
+          "description": "<p>The user's Copilot endpoint information.</p>",
+          "type": "CopilotEndpoints",
+          "id": "copilotendpoints",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#copilotendpoints"
+        },
+        {
           "name": "createdAt",
           "description": "<p>Identifies the date and time when the object was created.</p>",
           "type": "DateTime!",
@@ -75090,6 +76101,17 @@
                 "id": "int",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "minPermissionLevel",
+              "defaultValue": "READ",
+              "description": "<p>Filter projects based on user role.</p>",
+              "type": {
+                "name": "ProjectV2PermissionLevel",
+                "id": "projectv2permissionlevel",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#projectv2permissionlevel"
               }
             },
             {
@@ -76627,6 +77649,14 @@
           "id": "uri",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#uri"
+        },
+        {
+          "name": "userViewType",
+          "description": "<p>Whether the request returns publicly visible information or privately visible information about the user.</p>",
+          "type": "UserViewType!",
+          "id": "userviewtype",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#userviewtype"
         },
         {
           "name": "viewerCanChangePinnedItems",
@@ -78368,6 +79398,14 @@
       "description": "<p>Require all changes made to a targeted branch to pass the specified workflows before they can be merged.</p>",
       "fields": [
         {
+          "name": "doNotEnforceOnCreate",
+          "description": "<p>Allow repositories and branches to be created if a check would otherwise prohibit it.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "workflows",
           "description": "<p>Workflows that must pass for this rule to pass.</p>",
           "type": "[WorkflowFileReference!]!",
@@ -78446,6 +79484,14 @@
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "announcementCreatedAt",
+          "description": "<p>The date the announcement was created.</p>",
+          "type": "DateTime",
+          "id": "datetime",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#datetime"
         },
         {
           "name": "announcementExpiresAt",
@@ -79161,6 +80207,14 @@
               }
             }
           ]
+        },
+        {
+          "name": "viewerCanLabel",
+          "description": "<p>Indicates if the viewer can edit labels for this object.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
         }
       ]
     },
@@ -80159,6 +81213,17 @@
                 "id": "int",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "minPermissionLevel",
+              "defaultValue": "READ",
+              "description": "<p>Filter projects based on user role.</p>",
+              "type": {
+                "name": "ProjectV2PermissionLevel",
+                "id": "projectv2permissionlevel",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#projectv2permissionlevel"
               }
             },
             {
@@ -82643,6 +83708,10 @@
       "description": "<p>The possible protection rule types.</p>",
       "values": [
         {
+          "name": "BRANCH_POLICY",
+          "description": "<p>Branch policy.</p>"
+        },
+        {
           "name": "REQUIRED_REVIEWERS",
           "description": "<p>Required reviewers.</p>"
         },
@@ -82999,6 +84068,23 @@
       ]
     },
     {
+      "name": "EnterpriseDisallowedMethodsSettingValue",
+      "kind": "enums",
+      "id": "enterprisedisallowedmethodssettingvalue",
+      "href": "/graphql/reference/enums#enterprisedisallowedmethodssettingvalue",
+      "description": "<p>The possible values for an enabled/no policy enterprise setting.</p>",
+      "values": [
+        {
+          "name": "INSECURE",
+          "description": "<p>The setting prevents insecure 2FA methods from being used by members of the enterprise.</p>"
+        },
+        {
+          "name": "NO_POLICY",
+          "description": "<p>There is no policy set for preventing insecure 2FA methods from being used by members of the enterprise.</p>"
+        }
+      ]
+    },
+    {
       "name": "EnterpriseEnabledDisabledSettingValue",
       "kind": "enums",
       "id": "enterpriseenableddisabledsettingvalue",
@@ -83033,6 +84119,19 @@
         {
           "name": "NO_POLICY",
           "description": "<p>There is no policy set for organizations in the enterprise.</p>"
+        }
+      ]
+    },
+    {
+      "name": "EnterpriseMemberInvitationOrderField",
+      "kind": "enums",
+      "id": "enterprisememberinvitationorderfield",
+      "href": "/graphql/reference/enums#enterprisememberinvitationorderfield",
+      "description": "<p>Properties by which enterprise member invitation connections can be ordered.</p>",
+      "values": [
+        {
+          "name": "CREATED_AT",
+          "description": "<p>Order enterprise member invitations by creation time.</p>"
         }
       ]
     },
@@ -83274,6 +84373,27 @@
       ]
     },
     {
+      "name": "EnvironmentPinnedFilterField",
+      "kind": "enums",
+      "id": "environmentpinnedfilterfield",
+      "href": "/graphql/reference/enums#environmentpinnedfilterfield",
+      "description": "<p>Properties by which environments connections can be ordered.</p>",
+      "values": [
+        {
+          "name": "ALL",
+          "description": "<p>All environments will be returned.</p>"
+        },
+        {
+          "name": "NONE",
+          "description": "<p>Environments exclude pinned will be returned.</p>"
+        },
+        {
+          "name": "ONLY",
+          "description": "<p>Only pinned environment will be returned.</p>"
+        }
+      ]
+    },
+    {
       "name": "FileViewedState",
       "kind": "enums",
       "id": "fileviewedstate",
@@ -83344,6 +84464,10 @@
         {
           "name": "POLAR",
           "description": "<p>Polar funding platform.</p>"
+        },
+        {
+          "name": "THANKS_DEV",
+          "description": "<p>thanks.dev funding platform.</p>"
         },
         {
           "name": "TIDELIFT",
@@ -83554,6 +84678,10 @@
           "description": "<p>An issue that has been closed as completed.</p>"
         },
         {
+          "name": "DUPLICATE",
+          "description": "<p>An issue that has been closed as a duplicate.</p>"
+        },
+        {
           "name": "NOT_PLANNED",
           "description": "<p>An issue that has been closed as not planned.</p>"
         }
@@ -83620,6 +84748,10 @@
         {
           "name": "COMPLETED",
           "description": "<p>An issue that has been closed as completed.</p>"
+        },
+        {
+          "name": "DUPLICATE",
+          "description": "<p>An issue that has been closed as a duplicate.</p>"
         },
         {
           "name": "NOT_PLANNED",
@@ -83900,6 +85032,44 @@
         {
           "name": "UNMERGEABLE",
           "description": "<p>The entry is currently unmergeable.</p>"
+        }
+      ]
+    },
+    {
+      "name": "MergeQueueGroupingStrategy",
+      "kind": "enums",
+      "id": "mergequeuegroupingstrategy",
+      "href": "/graphql/reference/enums#mergequeuegroupingstrategy",
+      "description": "<p>When set to ALLGREEN, the merge commit created by merge queue for each PR in the\ngroup must pass all required checks to merge. When set to HEADGREEN, only the\ncommit at the head of the merge group, i.e. the commit containing changes from\nall of the PRs in the group, must pass its required checks to merge.</p>",
+      "values": [
+        {
+          "name": "ALLGREEN",
+          "description": "<p>The merge commit created by merge queue for each PR in the group must pass all required checks to merge.</p>"
+        },
+        {
+          "name": "HEADGREEN",
+          "description": "<p>Only the commit at the head of the merge group must pass its required checks to merge.</p>"
+        }
+      ]
+    },
+    {
+      "name": "MergeQueueMergeMethod",
+      "kind": "enums",
+      "id": "mergequeuemergemethod",
+      "href": "/graphql/reference/enums#mergequeuemergemethod",
+      "description": "<p>Method to use when merging changes from queued pull requests.</p>",
+      "values": [
+        {
+          "name": "MERGE",
+          "description": "<p>Merge commit.</p>"
+        },
+        {
+          "name": "REBASE",
+          "description": "<p>Rebase and merge.</p>"
+        },
+        {
+          "name": "SQUASH",
+          "description": "<p>Squash and merge.</p>"
         }
       ]
     },
@@ -84834,6 +86004,19 @@
       ]
     },
     {
+      "name": "PinnedEnvironmentOrderField",
+      "kind": "enums",
+      "id": "pinnedenvironmentorderfield",
+      "href": "/graphql/reference/enums#pinnedenvironmentorderfield",
+      "description": "<p>Properties by which pinned environments connections can be ordered.</p>",
+      "values": [
+        {
+          "name": "POSITION",
+          "description": "<p>Order pinned environments by position.</p>"
+        }
+      ]
+    },
+    {
       "name": "ProjectCardArchivedState",
       "kind": "enums",
       "id": "projectcardarchivedstate",
@@ -85143,6 +86326,27 @@
       ]
     },
     {
+      "name": "ProjectV2PermissionLevel",
+      "kind": "enums",
+      "id": "projectv2permissionlevel",
+      "href": "/graphql/reference/enums#projectv2permissionlevel",
+      "description": "<p>The possible roles of a collaborator on a project.</p>",
+      "values": [
+        {
+          "name": "ADMIN",
+          "description": "<p>The collaborator can view, edit, and maange the settings of the project.</p>"
+        },
+        {
+          "name": "READ",
+          "description": "<p>The collaborator can view the project.</p>"
+        },
+        {
+          "name": "WRITE",
+          "description": "<p>The collaborator can view and edit the project.</p>"
+        }
+      ]
+    },
+    {
       "name": "ProjectV2Roles",
       "kind": "enums",
       "id": "projectv2roles",
@@ -85222,6 +86426,48 @@
         {
           "name": "OPEN",
           "description": "<p>A project v2 that is still open.</p>"
+        }
+      ]
+    },
+    {
+      "name": "ProjectV2StatusUpdateOrderField",
+      "kind": "enums",
+      "id": "projectv2statusupdateorderfield",
+      "href": "/graphql/reference/enums#projectv2statusupdateorderfield",
+      "description": "<p>Properties by which project v2 status updates can be ordered.</p>",
+      "values": [
+        {
+          "name": "CREATED_AT",
+          "description": "<p>Allows chronological ordering of project v2 status updates.</p>"
+        }
+      ]
+    },
+    {
+      "name": "ProjectV2StatusUpdateStatus",
+      "kind": "enums",
+      "id": "projectv2statusupdatestatus",
+      "href": "/graphql/reference/enums#projectv2statusupdatestatus",
+      "description": "<p>The possible statuses of a project v2.</p>",
+      "values": [
+        {
+          "name": "AT_RISK",
+          "description": "<p>A project v2 that is at risk and encountering some challenges.</p>"
+        },
+        {
+          "name": "COMPLETE",
+          "description": "<p>A project v2 that is complete.</p>"
+        },
+        {
+          "name": "INACTIVE",
+          "description": "<p>A project v2 that is inactive.</p>"
+        },
+        {
+          "name": "OFF_TRACK",
+          "description": "<p>A project v2 that is off track and needs attention.</p>"
+        },
+        {
+          "name": "ON_TRACK",
+          "description": "<p>A project v2 that is on track with no risks.</p>"
         }
       ]
     },
@@ -86316,6 +87562,10 @@
           "description": "<p>Branch name pattern.</p>"
         },
         {
+          "name": "CODE_SCANNING",
+          "description": "<p>Choose which tools must provide code scanning results before the reference is\nupdated. When configured, code scanning must be enabled and have results for\nboth the commit and the reference being updated.</p>"
+        },
+        {
           "name": "COMMITTER_EMAIL_PATTERN",
           "description": "<p>Committer email pattern.</p>"
         },
@@ -86336,8 +87586,24 @@
           "description": "<p>Only allow users with bypass permissions to delete matching refs.</p>"
         },
         {
+          "name": "FILE_EXTENSION_RESTRICTION",
+          "description": "<p>Prevent commits that include files with specified file extensions from being pushed to the commit graph.</p>"
+        },
+        {
+          "name": "FILE_PATH_RESTRICTION",
+          "description": "<p>Prevent commits that include changes in specified file paths from being pushed to the commit graph.</p>"
+        },
+        {
           "name": "LOCK_BRANCH",
           "description": "<p>Branch is read-only. Users cannot push to the branch.</p>"
+        },
+        {
+          "name": "MAX_FILE_PATH_LENGTH",
+          "description": "<p>Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph.</p>"
+        },
+        {
+          "name": "MAX_FILE_SIZE",
+          "description": "<p>Prevent commits that exceed a specified file size limit from being pushed to the commit.</p>"
         },
         {
           "name": "MAX_REF_UPDATES",
@@ -86436,6 +87702,10 @@
         {
           "name": "BRANCH",
           "description": "<p>Branch.</p>"
+        },
+        {
+          "name": "PUSH",
+          "description": "<p>Push.</p>"
         },
         {
           "name": "TAG",
@@ -86763,6 +88033,14 @@
       "href": "/graphql/reference/enums#securityadvisoryorderfield",
       "description": "<p>Properties by which security advisory connections can be ordered.</p>",
       "values": [
+        {
+          "name": "EPSS_PERCENTAGE",
+          "description": "<p>Order advisories by EPSS percentage.</p>"
+        },
+        {
+          "name": "EPSS_PERCENTILE",
+          "description": "<p>Order advisories by EPSS percentile.</p>"
+        },
         {
           "name": "PUBLISHED_AT",
           "description": "<p>Order advisories by publication time.</p>"
@@ -88358,25 +89636,6 @@
       "id": "teamreviewassignmentalgorithm",
       "href": "/graphql/reference/enums#teamreviewassignmentalgorithm",
       "description": "<p>The possible team review assignment algorithms.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Team review assignments preview",
-        "description": "This preview adds support for updating the settings for team review assignment.",
-        "toggled_by": "stone-crop-preview",
-        "toggled_on": [
-          "Mutation.updateTeamReviewAssignment",
-          "TeamReviewAssignmentAlgorithm",
-          "Team.reviewRequestDelegationEnabled",
-          "Team.reviewRequestDelegationAlgorithm",
-          "Team.reviewRequestDelegationMemberCount",
-          "Team.reviewRequestDelegationNotifyTeam"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.stone-crop-preview+json",
-        "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
-      },
       "values": [
         {
           "name": "LOAD_BALANCE",
@@ -88514,6 +89773,27 @@
       ]
     },
     {
+      "name": "TwoFactorCredentialSecurityType",
+      "kind": "enums",
+      "id": "twofactorcredentialsecuritytype",
+      "href": "/graphql/reference/enums#twofactorcredentialsecuritytype",
+      "description": "<p>Filters by whether or not 2FA is enabled and if the method configured is considered secure or insecure.</p>",
+      "values": [
+        {
+          "name": "DISABLED",
+          "description": "<p>No method of two-factor authentication.</p>"
+        },
+        {
+          "name": "INSECURE",
+          "description": "<p>Has an insecure method of two-factor authentication. GitHub currently defines this as SMS two-factor authentication.</p>"
+        },
+        {
+          "name": "SECURE",
+          "description": "<p>Has only secure methods of two-factor authentication.</p>"
+        }
+      ]
+    },
+    {
       "name": "UserBlockDuration",
       "kind": "enums",
       "id": "userblockduration",
@@ -88552,6 +89832,23 @@
         {
           "name": "UPDATED_AT",
           "description": "<p>Order user statuses by when they were updated.</p>"
+        }
+      ]
+    },
+    {
+      "name": "UserViewType",
+      "kind": "enums",
+      "id": "userviewtype",
+      "href": "/graphql/reference/enums#userviewtype",
+      "description": "<p>Whether a user being viewed contains public or private information.</p>",
+      "values": [
+        {
+          "name": "PRIVATE",
+          "description": "<p>A user containing information only visible to the authenticated user.</p>"
+        },
+        {
+          "name": "PUBLIC",
+          "description": "<p>A user that is publicly visible.</p>"
         }
       ]
     },
@@ -88742,6 +90039,11 @@
           "name": "Commit",
           "id": "commit",
           "href": "/graphql/reference/objects#commit"
+        },
+        {
+          "name": "ProjectV2",
+          "id": "projectv2",
+          "href": "/graphql/reference/objects#projectv2"
         },
         {
           "name": "PullRequest",
@@ -90350,6 +91652,11 @@
           "href": "/graphql/reference/objects#branchnamepatternparameters"
         },
         {
+          "name": "CodeScanningParameters",
+          "id": "codescanningparameters",
+          "href": "/graphql/reference/objects#codescanningparameters"
+        },
+        {
           "name": "CommitAuthorEmailPatternParameters",
           "id": "commitauthoremailpatternparameters",
           "href": "/graphql/reference/objects#commitauthoremailpatternparameters"
@@ -90363,6 +91670,31 @@
           "name": "CommitterEmailPatternParameters",
           "id": "committeremailpatternparameters",
           "href": "/graphql/reference/objects#committeremailpatternparameters"
+        },
+        {
+          "name": "FileExtensionRestrictionParameters",
+          "id": "fileextensionrestrictionparameters",
+          "href": "/graphql/reference/objects#fileextensionrestrictionparameters"
+        },
+        {
+          "name": "FilePathRestrictionParameters",
+          "id": "filepathrestrictionparameters",
+          "href": "/graphql/reference/objects#filepathrestrictionparameters"
+        },
+        {
+          "name": "MaxFilePathLengthParameters",
+          "id": "maxfilepathlengthparameters",
+          "href": "/graphql/reference/objects#maxfilepathlengthparameters"
+        },
+        {
+          "name": "MaxFileSizeParameters",
+          "id": "maxfilesizeparameters",
+          "href": "/graphql/reference/objects#maxfilesizeparameters"
+        },
+        {
+          "name": "MergeQueueParameters",
+          "id": "mergequeueparameters",
+          "href": "/graphql/reference/objects#mergequeueparameters"
         },
         {
           "name": "PullRequestParameters",
@@ -90403,6 +91735,11 @@
       "href": "/graphql/reference/unions#rulesource",
       "description": "<p>Types which can have <code>RepositoryRule</code> objects.</p>",
       "possibleTypes": [
+        {
+          "name": "Enterprise",
+          "id": "enterprise",
+          "href": "/graphql/reference/objects#enterprise"
+        },
         {
           "name": "Organization",
           "id": "organization",
@@ -90633,6 +91970,32 @@
       "id": "acceptenterpriseadministratorinvitationinput",
       "href": "/graphql/reference/input-objects#acceptenterpriseadministratorinvitationinput",
       "description": "<p>Autogenerated input type of AcceptEnterpriseAdministratorInvitation.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "invitationId",
+          "description": "<p>The id of the invitation being accepted.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        }
+      ]
+    },
+    {
+      "name": "AcceptEnterpriseMemberInvitationInput",
+      "kind": "inputObjects",
+      "id": "acceptenterprisememberinvitationinput",
+      "href": "/graphql/reference/input-objects#acceptenterprisememberinvitationinput",
+      "description": "<p>Autogenerated input type of AcceptEnterpriseMemberInvitation.</p>",
       "inputFields": [
         {
           "name": "clientMutationId",
@@ -91760,6 +93123,32 @@
       ]
     },
     {
+      "name": "CancelEnterpriseMemberInvitationInput",
+      "kind": "inputObjects",
+      "id": "cancelenterprisememberinvitationinput",
+      "href": "/graphql/reference/input-objects#cancelenterprisememberinvitationinput",
+      "description": "<p>Autogenerated input type of CancelEnterpriseMemberInvitation.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "invitationId",
+          "description": "<p>The Node ID of the pending enterprise member invitation.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        }
+      ]
+    },
+    {
       "name": "CancelSponsorshipInput",
       "kind": "inputObjects",
       "id": "cancelsponsorshipinput",
@@ -92487,6 +93876,56 @@
       ]
     },
     {
+      "name": "CodeScanningParametersInput",
+      "kind": "inputObjects",
+      "id": "codescanningparametersinput",
+      "href": "/graphql/reference/input-objects#codescanningparametersinput",
+      "description": "<p>Choose which tools must provide code scanning results before the reference is\nupdated. When configured, code scanning must be enabled and have results for\nboth the commit and the reference being updated.</p>",
+      "inputFields": [
+        {
+          "name": "codeScanningTools",
+          "description": "<p>Tools that must provide code scanning results for this rule to pass.</p>",
+          "type": "[CodeScanningToolInput!]!",
+          "id": "codescanningtoolinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#codescanningtoolinput"
+        }
+      ]
+    },
+    {
+      "name": "CodeScanningToolInput",
+      "kind": "inputObjects",
+      "id": "codescanningtoolinput",
+      "href": "/graphql/reference/input-objects#codescanningtoolinput",
+      "description": "<p>A tool that must provide code scanning results for this rule to pass.</p>",
+      "inputFields": [
+        {
+          "name": "alertsThreshold",
+          "description": "<p>The severity level at which code scanning results that raise alerts block a\nreference update. For more information on alert severity levels, see \"<a href=\"$%7BexternalDocsUrl%7D/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels\">About code scanning alerts</a>.\".</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "securityAlertsThreshold",
+          "description": "<p>The severity level at which code scanning results that raise security alerts\nblock a reference update. For more information on security severity levels,\nsee \"<a href=\"$%7BexternalDocsUrl%7D/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels\">About code scanning alerts</a>.\".</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "tool",
+          "description": "<p>The name of a code scanning tool.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        }
+      ]
+    },
+    {
       "name": "CommitAuthor",
       "kind": "inputObjects",
       "id": "commitauthor",
@@ -92782,6 +94221,41 @@
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
+        }
+      ]
+    },
+    {
+      "name": "ConvertProjectV2DraftIssueItemToIssueInput",
+      "kind": "inputObjects",
+      "id": "convertprojectv2draftissueitemtoissueinput",
+      "href": "/graphql/reference/input-objects#convertprojectv2draftissueitemtoissueinput",
+      "description": "<p>Autogenerated input type of ConvertProjectV2DraftIssueItemToIssue.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "itemId",
+          "description": "<p>The ID of the draft issue ProjectV2Item to convert.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        },
+        {
+          "name": "repositoryId",
+          "description": "<p>The ID of the repository to create the issue in.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
         }
       ]
     },
@@ -93343,22 +94817,6 @@
       "id": "createdeploymentinput",
       "href": "/graphql/reference/input-objects#createdeploymentinput",
       "description": "<p>Autogenerated input type of CreateDeployment.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Deployments preview",
-        "description": "This preview adds support for deployments mutations and new deployments features.",
-        "toggled_by": "flash-preview",
-        "toggled_on": [
-          "DeploymentStatus.environment",
-          "Mutation.createDeploymentStatus",
-          "Mutation.createDeployment"
-        ],
-        "owning_teams": [
-          "@github/pages"
-        ],
-        "accept_header": "application/vnd.github.flash-preview+json",
-        "href": "/graphql/overview/schema-previews#deployments-preview"
-      },
       "inputFields": [
         {
           "name": "autoMerge",
@@ -93442,22 +94900,6 @@
       "id": "createdeploymentstatusinput",
       "href": "/graphql/reference/input-objects#createdeploymentstatusinput",
       "description": "<p>Autogenerated input type of CreateDeploymentStatus.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Deployments preview",
-        "description": "This preview adds support for deployments mutations and new deployments features.",
-        "toggled_by": "flash-preview",
-        "toggled_on": [
-          "DeploymentStatus.environment",
-          "Mutation.createDeploymentStatus",
-          "Mutation.createDeployment"
-        ],
-        "owning_teams": [
-          "@github/pages"
-        ],
-        "accept_header": "application/vnd.github.flash-preview+json",
-        "href": "/graphql/overview/schema-previews#deployments-preview"
-      },
       "inputFields": [
         {
           "name": "autoInactive",
@@ -93811,22 +95253,6 @@
       "id": "createlabelinput",
       "href": "/graphql/reference/input-objects#createlabelinput",
       "description": "<p>Autogenerated input type of CreateLabel.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Labels preview",
-        "description": "This preview adds support for adding, updating, creating and deleting labels.",
-        "toggled_by": "bane-preview",
-        "toggled_on": [
-          "Mutation.createLabel",
-          "Mutation.deleteLabel",
-          "Mutation.updateLabel"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.bane-preview+json",
-        "href": "/graphql/overview/schema-previews#labels-preview"
-      },
       "inputFields": [
         {
           "name": "clientMutationId",
@@ -94146,6 +95572,64 @@
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
+        }
+      ]
+    },
+    {
+      "name": "CreateProjectV2StatusUpdateInput",
+      "kind": "inputObjects",
+      "id": "createprojectv2statusupdateinput",
+      "href": "/graphql/reference/input-objects#createprojectv2statusupdateinput",
+      "description": "<p>Autogenerated input type of CreateProjectV2StatusUpdate.</p>",
+      "inputFields": [
+        {
+          "name": "body",
+          "description": "<p>The body of the status update.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "projectId",
+          "description": "<p>The ID of the Project to create the status update in.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        },
+        {
+          "name": "startDate",
+          "description": "<p>The start date of the status update.</p>",
+          "type": "Date",
+          "id": "date",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#date"
+        },
+        {
+          "name": "status",
+          "description": "<p>The status of the status update.</p>",
+          "type": "ProjectV2StatusUpdateStatus",
+          "id": "projectv2statusupdatestatus",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#projectv2statusupdatestatus"
+        },
+        {
+          "name": "targetDate",
+          "description": "<p>The target date of the status update.</p>",
+          "type": "Date",
+          "id": "date",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#date"
         }
       ]
     },
@@ -95141,22 +96625,6 @@
       "id": "deletelabelinput",
       "href": "/graphql/reference/input-objects#deletelabelinput",
       "description": "<p>Autogenerated input type of DeleteLabel.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Labels preview",
-        "description": "This preview adds support for adding, updating, creating and deleting labels.",
-        "toggled_by": "bane-preview",
-        "toggled_on": [
-          "Mutation.createLabel",
-          "Mutation.deleteLabel",
-          "Mutation.updateLabel"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.bane-preview+json",
-        "href": "/graphql/overview/schema-previews#labels-preview"
-      },
       "inputFields": [
         {
           "name": "clientMutationId",
@@ -95386,6 +96854,32 @@
         {
           "name": "projectId",
           "description": "<p>The ID of the Project from which the item should be removed.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        }
+      ]
+    },
+    {
+      "name": "DeleteProjectV2StatusUpdateInput",
+      "kind": "inputObjects",
+      "id": "deleteprojectv2statusupdateinput",
+      "href": "/graphql/reference/input-objects#deleteprojectv2statusupdateinput",
+      "description": "<p>Autogenerated input type of DeleteProjectV2StatusUpdate.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "statusUpdateId",
+          "description": "<p>The ID of the status update to be removed.</p>",
           "type": "ID!",
           "id": "id",
           "kind": "scalars",
@@ -96047,6 +97541,31 @@
       ]
     },
     {
+      "name": "EnterpriseMemberInvitationOrder",
+      "kind": "inputObjects",
+      "id": "enterprisememberinvitationorder",
+      "href": "/graphql/reference/input-objects#enterprisememberinvitationorder",
+      "description": "<p>Ordering options for enterprise administrator invitation connections.</p>",
+      "inputFields": [
+        {
+          "name": "direction",
+          "description": "<p>The ordering direction.</p>",
+          "type": "OrderDirection!",
+          "id": "orderdirection",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#orderdirection"
+        },
+        {
+          "name": "field",
+          "description": "<p>The field to order enterprise member invitations by.</p>",
+          "type": "EnterpriseMemberInvitationOrderField!",
+          "id": "enterprisememberinvitationorderfield",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#enterprisememberinvitationorderfield"
+        }
+      ]
+    },
+    {
       "name": "EnterpriseMemberOrder",
       "kind": "inputObjects",
       "id": "enterprisememberorder",
@@ -96282,6 +97801,40 @@
           "name": "path",
           "description": "<p>The path to delete.</p>",
           "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        }
+      ]
+    },
+    {
+      "name": "FileExtensionRestrictionParametersInput",
+      "kind": "inputObjects",
+      "id": "fileextensionrestrictionparametersinput",
+      "href": "/graphql/reference/input-objects#fileextensionrestrictionparametersinput",
+      "description": "<p>Prevent commits that include files with specified file extensions from being pushed to the commit graph.</p>",
+      "inputFields": [
+        {
+          "name": "restrictedFileExtensions",
+          "description": "<p>The file extensions that are restricted from being pushed to the commit graph.</p>",
+          "type": "[String!]!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        }
+      ]
+    },
+    {
+      "name": "FilePathRestrictionParametersInput",
+      "kind": "inputObjects",
+      "id": "filepathrestrictionparametersinput",
+      "href": "/graphql/reference/input-objects#filepathrestrictionparametersinput",
+      "description": "<p>Prevent commits that include changes in specified file paths from being pushed to the commit graph.</p>",
+      "inputFields": [
+        {
+          "name": "restrictedFilePaths",
+          "description": "<p>The file paths that are restricted from being pushed to the commit graph.</p>",
+          "type": "[String!]!",
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
@@ -96545,6 +98098,48 @@
           "id": "enterpriseadministratorrole",
           "kind": "enums",
           "href": "/graphql/reference/enums#enterpriseadministratorrole"
+        }
+      ]
+    },
+    {
+      "name": "InviteEnterpriseMemberInput",
+      "kind": "inputObjects",
+      "id": "inviteenterprisememberinput",
+      "href": "/graphql/reference/input-objects#inviteenterprisememberinput",
+      "description": "<p>Autogenerated input type of InviteEnterpriseMember.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "email",
+          "description": "<p>The email of the person to invite as an unaffiliated member.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "enterpriseId",
+          "description": "<p>The ID of the enterprise to which you want to invite an unaffiliated member.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        },
+        {
+          "name": "invitee",
+          "description": "<p>The login of a user to invite as an unaffiliated member.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
         }
       ]
     },
@@ -97057,6 +98652,40 @@
       ]
     },
     {
+      "name": "MaxFilePathLengthParametersInput",
+      "kind": "inputObjects",
+      "id": "maxfilepathlengthparametersinput",
+      "href": "/graphql/reference/input-objects#maxfilepathlengthparametersinput",
+      "description": "<p>Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph.</p>",
+      "inputFields": [
+        {
+          "name": "maxFilePathLength",
+          "description": "<p>The maximum amount of characters allowed in file paths.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
+      "name": "MaxFileSizeParametersInput",
+      "kind": "inputObjects",
+      "id": "maxfilesizeparametersinput",
+      "href": "/graphql/reference/input-objects#maxfilesizeparametersinput",
+      "description": "<p>Prevent commits that exceed a specified file size limit from being pushed to the commit.</p>",
+      "inputFields": [
+        {
+          "name": "maxFileSize",
+          "description": "<p>The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
       "name": "MergeBranchInput",
       "kind": "inputObjects",
       "id": "mergebranchinput",
@@ -97177,6 +98806,71 @@
           "kind": "scalars",
           "href": "/graphql/reference/scalars#id",
           "isDeprecated": false
+        }
+      ]
+    },
+    {
+      "name": "MergeQueueParametersInput",
+      "kind": "inputObjects",
+      "id": "mergequeueparametersinput",
+      "href": "/graphql/reference/input-objects#mergequeueparametersinput",
+      "description": "<p>Merges must be performed via a merge queue.</p>",
+      "inputFields": [
+        {
+          "name": "checkResponseTimeoutMinutes",
+          "description": "<p>Maximum time for a required status check to report a conclusion. After this\nmuch time has elapsed, checks that have not reported a conclusion will be\nassumed to have failed.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "groupingStrategy",
+          "description": "<p>When set to ALLGREEN, the merge commit created by merge queue for each PR in\nthe group must pass all required checks to merge. When set to HEADGREEN, only\nthe commit at the head of the merge group, i.e. the commit containing changes\nfrom all of the PRs in the group, must pass its required checks to merge.</p>",
+          "type": "MergeQueueGroupingStrategy!",
+          "id": "mergequeuegroupingstrategy",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#mergequeuegroupingstrategy"
+        },
+        {
+          "name": "maxEntriesToBuild",
+          "description": "<p>Limit the number of queued pull requests requesting checks and workflow runs at the same time.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "maxEntriesToMerge",
+          "description": "<p>The maximum number of PRs that will be merged together in a group.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "mergeMethod",
+          "description": "<p>Method to use when merging changes from queued pull requests.</p>",
+          "type": "MergeQueueMergeMethod!",
+          "id": "mergequeuemergemethod",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#mergequeuemergemethod"
+        },
+        {
+          "name": "minEntriesToMerge",
+          "description": "<p>The minimum number of PRs that will be merged together in a group.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        },
+        {
+          "name": "minEntriesToMergeWaitMinutes",
+          "description": "<p>The time merge queue should wait after the first PR is added to the queue for\nthe minimum group size to be met. After this time has elapsed, the minimum\ngroup size will be ignored and a smaller group will be merged.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
         }
       ]
     },
@@ -97444,6 +99138,40 @@
       ]
     },
     {
+      "name": "PinEnvironmentInput",
+      "kind": "inputObjects",
+      "id": "pinenvironmentinput",
+      "href": "/graphql/reference/input-objects#pinenvironmentinput",
+      "description": "<p>Autogenerated input type of PinEnvironment.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "environmentId",
+          "description": "<p>The ID of the environment to modify.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        },
+        {
+          "name": "pinned",
+          "description": "<p>The desired state of the environment. If true, environment will be pinned. If false, it will be unpinned.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        }
+      ]
+    },
+    {
       "name": "PinIssueInput",
       "kind": "inputObjects",
       "id": "pinissueinput",
@@ -97466,6 +99194,31 @@
           "kind": "scalars",
           "href": "/graphql/reference/scalars#id",
           "isDeprecated": false
+        }
+      ]
+    },
+    {
+      "name": "PinnedEnvironmentOrder",
+      "kind": "inputObjects",
+      "id": "pinnedenvironmentorder",
+      "href": "/graphql/reference/input-objects#pinnedenvironmentorder",
+      "description": "<p>Ordering options for pinned environments.</p>",
+      "inputFields": [
+        {
+          "name": "direction",
+          "description": "<p>The direction in which to order pinned environments by the specified field.</p>",
+          "type": "OrderDirection!",
+          "id": "orderdirection",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#orderdirection"
+        },
+        {
+          "name": "field",
+          "description": "<p>The field to order pinned environments by.</p>",
+          "type": "PinnedEnvironmentOrderField!",
+          "id": "pinnedenvironmentorderfield",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#pinnedenvironmentorderfield"
         }
       ]
     },
@@ -97787,6 +99540,31 @@
       ]
     },
     {
+      "name": "ProjectV2StatusOrder",
+      "kind": "inputObjects",
+      "id": "projectv2statusorder",
+      "href": "/graphql/reference/input-objects#projectv2statusorder",
+      "description": "<p>Ways in which project v2 status updates can be ordered.</p>",
+      "inputFields": [
+        {
+          "name": "direction",
+          "description": "<p>The direction in which to order nodes.</p>",
+          "type": "OrderDirection!",
+          "id": "orderdirection",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#orderdirection"
+        },
+        {
+          "name": "field",
+          "description": "<p>The field by which to order nodes.</p>",
+          "type": "ProjectV2StatusUpdateOrderField!",
+          "id": "projectv2statusupdateorderfield",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#projectv2statusupdateorderfield"
+        }
+      ]
+    },
+    {
       "name": "ProjectV2ViewOrder",
       "kind": "inputObjects",
       "id": "projectv2vieworder",
@@ -97855,6 +99633,14 @@
           "name": "propertyValues",
           "description": "<p>The values to match for.</p>",
           "type": "[String!]!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "source",
+          "description": "<p>The source of the property. Choose<code>custom</code>or 'system'. Defaults to 'custom' if not specified.</p>",
+          "type": "String",
           "id": "string",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#string"
@@ -98042,22 +99828,6 @@
       "id": "refupdate",
       "href": "/graphql/reference/input-objects#refupdate",
       "description": "<p>A ref update.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Update refs preview update multiple refs in a single operation preview",
-        "description": "This preview adds support for updating multiple refs in a single operation.",
-        "toggled_by": "update-refs-preview",
-        "toggled_on": [
-          "Mutation.updateRefs",
-          "GitRefname",
-          "RefUpdate"
-        ],
-        "owning_teams": [
-          "@github/repos"
-        ],
-        "accept_header": "application/vnd.github.update-refs-preview+json",
-        "href": "/graphql/overview/schema-previews#update-refs-preview-update-multiple-refs-in-a-single-operation-preview"
-      },
       "inputFields": [
         {
           "name": "afterOid",
@@ -98646,6 +100416,40 @@
       ]
     },
     {
+      "name": "ReorderEnvironmentInput",
+      "kind": "inputObjects",
+      "id": "reorderenvironmentinput",
+      "href": "/graphql/reference/input-objects#reorderenvironmentinput",
+      "description": "<p>Autogenerated input type of ReorderEnvironment.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "environmentId",
+          "description": "<p>The ID of the environment to modify.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        },
+        {
+          "name": "position",
+          "description": "<p>The desired position of the environment.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
       "name": "RepositoryIdConditionTargetInput",
       "kind": "inputObjects",
       "id": "repositoryidconditiontargetinput",
@@ -98900,7 +100704,7 @@
       "kind": "inputObjects",
       "id": "repositoryrulesetbypassactorinput",
       "href": "/graphql/reference/input-objects#repositoryrulesetbypassactorinput",
-      "description": "<p>Specifies the attributes for a new or updated ruleset bypass actor. Only one of\n<code>actor_id</code>, <code>repository_role_database_id</code>, or <code>organization_admin</code> should be specified.</p>",
+      "description": "<p>Specifies the attributes for a new or updated ruleset bypass actor. Only one of\n<code>actor_id</code>, <code>repository_role_database_id</code>, <code>organization_admin</code>, or <code>deploy_key</code>\nshould be specified.</p>",
       "inputFields": [
         {
           "name": "actorId",
@@ -98917,6 +100721,22 @@
           "id": "repositoryrulesetbypassactorbypassmode",
           "kind": "enums",
           "href": "/graphql/reference/enums#repositoryrulesetbypassactorbypassmode"
+        },
+        {
+          "name": "deployKey",
+          "description": "<p>For deploy key bypasses, true. Can only use ALWAYS as the bypass mode.</p>",
+          "type": "Boolean",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "enterpriseOwner",
+          "description": "<p>For enterprise owner bypasses, true.</p>",
+          "type": "Boolean",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
         },
         {
           "name": "organizationAdmin",
@@ -99037,6 +100857,14 @@
       "href": "/graphql/reference/input-objects#requiredstatuschecksparametersinput",
       "description": "<p>Choose which status checks must pass before the ref is updated. When enabled,\ncommits must first be pushed to another ref where the checks pass.</p>",
       "inputFields": [
+        {
+          "name": "doNotEnforceOnCreate",
+          "description": "<p>Allow repositories and branches to be created if a check would otherwise prohibit it.</p>",
+          "type": "Boolean",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
         {
           "name": "requiredStatusChecks",
           "description": "<p>Status checks that are required.</p>",
@@ -99284,6 +101112,14 @@
           "href": "/graphql/reference/input-objects#branchnamepatternparametersinput"
         },
         {
+          "name": "codeScanning",
+          "description": "<p>Parameters used for the <code>code_scanning</code> rule type.</p>",
+          "type": "CodeScanningParametersInput",
+          "id": "codescanningparametersinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#codescanningparametersinput"
+        },
+        {
           "name": "commitAuthorEmailPattern",
           "description": "<p>Parameters used for the <code>commit_author_email_pattern</code> rule type.</p>",
           "type": "CommitAuthorEmailPatternParametersInput",
@@ -99306,6 +101142,46 @@
           "id": "committeremailpatternparametersinput",
           "kind": "input-objects",
           "href": "/graphql/reference/input-objects#committeremailpatternparametersinput"
+        },
+        {
+          "name": "fileExtensionRestriction",
+          "description": "<p>Parameters used for the <code>file_extension_restriction</code> rule type.</p>",
+          "type": "FileExtensionRestrictionParametersInput",
+          "id": "fileextensionrestrictionparametersinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#fileextensionrestrictionparametersinput"
+        },
+        {
+          "name": "filePathRestriction",
+          "description": "<p>Parameters used for the <code>file_path_restriction</code> rule type.</p>",
+          "type": "FilePathRestrictionParametersInput",
+          "id": "filepathrestrictionparametersinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#filepathrestrictionparametersinput"
+        },
+        {
+          "name": "maxFilePathLength",
+          "description": "<p>Parameters used for the <code>max_file_path_length</code> rule type.</p>",
+          "type": "MaxFilePathLengthParametersInput",
+          "id": "maxfilepathlengthparametersinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#maxfilepathlengthparametersinput"
+        },
+        {
+          "name": "maxFileSize",
+          "description": "<p>Parameters used for the <code>max_file_size</code> rule type.</p>",
+          "type": "MaxFileSizeParametersInput",
+          "id": "maxfilesizeparametersinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#maxfilesizeparametersinput"
+        },
+        {
+          "name": "mergeQueue",
+          "description": "<p>Parameters used for the <code>merge_queue</code> rule type.</p>",
+          "type": "MergeQueueParametersInput",
+          "id": "mergequeueparametersinput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#mergequeueparametersinput"
         },
         {
           "name": "pullRequest",
@@ -99999,7 +101875,7 @@
         {
           "name": "sourceRepositoryUrl",
           "description": "<p>The URL of the source repository.</p>",
-          "type": "URI",
+          "type": "URI!",
           "id": "uri",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#uri"
@@ -101898,6 +103774,40 @@
       ]
     },
     {
+      "name": "UpdateEnterpriseTwoFactorAuthenticationDisallowedMethodsSettingInput",
+      "kind": "inputObjects",
+      "id": "updateenterprisetwofactorauthenticationdisallowedmethodssettinginput",
+      "href": "/graphql/reference/input-objects#updateenterprisetwofactorauthenticationdisallowedmethodssettinginput",
+      "description": "<p>Autogenerated input type of UpdateEnterpriseTwoFactorAuthenticationDisallowedMethodsSetting.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "enterpriseId",
+          "description": "<p>The ID of the enterprise on which to set the two-factor authentication disallowed methods setting.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        },
+        {
+          "name": "settingValue",
+          "description": "<p>The value for the two-factor authentication disallowed methods setting on the enterprise.</p>",
+          "type": "EnterpriseDisallowedMethodsSettingValue!",
+          "id": "enterprisedisallowedmethodssettingvalue",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#enterprisedisallowedmethodssettingvalue"
+        }
+      ]
+    },
+    {
       "name": "UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput",
       "kind": "inputObjects",
       "id": "updateenterprisetwofactorauthenticationrequiredsettinginput",
@@ -102224,22 +104134,6 @@
       "id": "updatelabelinput",
       "href": "/graphql/reference/input-objects#updatelabelinput",
       "description": "<p>Autogenerated input type of UpdateLabel.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Labels preview",
-        "description": "This preview adds support for adding, updating, creating and deleting labels.",
-        "toggled_by": "bane-preview",
-        "toggled_on": [
-          "Mutation.createLabel",
-          "Mutation.deleteLabel",
-          "Mutation.updateLabel"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.bane-preview+json",
-        "href": "/graphql/overview/schema-previews#labels-preview"
-      },
       "inputFields": [
         {
           "name": "clientMutationId",
@@ -102818,6 +104712,64 @@
       ]
     },
     {
+      "name": "UpdateProjectV2StatusUpdateInput",
+      "kind": "inputObjects",
+      "id": "updateprojectv2statusupdateinput",
+      "href": "/graphql/reference/input-objects#updateprojectv2statusupdateinput",
+      "description": "<p>Autogenerated input type of UpdateProjectV2StatusUpdate.</p>",
+      "inputFields": [
+        {
+          "name": "body",
+          "description": "<p>The body of the status update.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "startDate",
+          "description": "<p>The start date of the status update.</p>",
+          "type": "Date",
+          "id": "date",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#date"
+        },
+        {
+          "name": "status",
+          "description": "<p>The status of the status update.</p>",
+          "type": "ProjectV2StatusUpdateStatus",
+          "id": "projectv2statusupdatestatus",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#projectv2statusupdatestatus"
+        },
+        {
+          "name": "statusUpdateId",
+          "description": "<p>The ID of the status update to be updated.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        },
+        {
+          "name": "targetDate",
+          "description": "<p>The target date of the status update.</p>",
+          "type": "Date",
+          "id": "date",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#date"
+        }
+      ]
+    },
+    {
       "name": "UpdatePullRequestBranchInput",
       "kind": "inputObjects",
       "id": "updatepullrequestbranchinput",
@@ -103076,22 +105028,6 @@
       "id": "updaterefsinput",
       "href": "/graphql/reference/input-objects#updaterefsinput",
       "description": "<p>Autogenerated input type of UpdateRefs.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Update refs preview update multiple refs in a single operation preview",
-        "description": "This preview adds support for updating multiple refs in a single operation.",
-        "toggled_by": "update-refs-preview",
-        "toggled_on": [
-          "Mutation.updateRefs",
-          "GitRefname",
-          "RefUpdate"
-        ],
-        "owning_teams": [
-          "@github/repos"
-        ],
-        "accept_header": "application/vnd.github.update-refs-preview+json",
-        "href": "/graphql/overview/schema-previews#update-refs-preview-update-multiple-refs-in-a-single-operation-preview"
-      },
       "inputFields": [
         {
           "name": "clientMutationId",
@@ -103533,25 +105469,6 @@
       "id": "updateteamreviewassignmentinput",
       "href": "/graphql/reference/input-objects#updateteamreviewassignmentinput",
       "description": "<p>Autogenerated input type of UpdateTeamReviewAssignment.</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Team review assignments preview",
-        "description": "This preview adds support for updating the settings for team review assignment.",
-        "toggled_by": "stone-crop-preview",
-        "toggled_on": [
-          "Mutation.updateTeamReviewAssignment",
-          "TeamReviewAssignmentAlgorithm",
-          "Team.reviewRequestDelegationEnabled",
-          "Team.reviewRequestDelegationAlgorithm",
-          "Team.reviewRequestDelegationMemberCount",
-          "Team.reviewRequestDelegationNotifyTeam"
-        ],
-        "owning_teams": [
-          "@github/pe-pull-requests"
-        ],
-        "accept_header": "application/vnd.github.stone-crop-preview+json",
-        "href": "/graphql/overview/schema-previews#team-review-assignments-preview"
-      },
       "inputFields": [
         {
           "name": "algorithm",
@@ -103958,6 +105875,14 @@
       "description": "<p>Require all changes made to a targeted branch to pass the specified workflows before they can be merged.</p>",
       "inputFields": [
         {
+          "name": "doNotEnforceOnCreate",
+          "description": "<p>Allow repositories and branches to be created if a check would otherwise prohibit it.</p>",
+          "type": "Boolean",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "workflows",
           "description": "<p>Workflows that must pass for this rule to pass.</p>",
           "type": "[WorkflowFileReferenceInput!]!",
@@ -104021,23 +105946,7 @@
       "kind": "scalars",
       "id": "gitrefname",
       "href": "/graphql/reference/scalars#gitrefname",
-      "description": "<p>A fully qualified reference name (e.g. <code>refs/heads/master</code>).</p>",
-      "isDeprecated": false,
-      "preview": {
-        "title": "Update refs preview update multiple refs in a single operation preview",
-        "description": "This preview adds support for updating multiple refs in a single operation.",
-        "toggled_by": "update-refs-preview",
-        "toggled_on": [
-          "Mutation.updateRefs",
-          "GitRefname",
-          "RefUpdate"
-        ],
-        "owning_teams": [
-          "@github/repos"
-        ],
-        "accept_header": "application/vnd.github.update-refs-preview+json",
-        "href": "/graphql/overview/schema-previews#update-refs-preview-update-multiple-refs-in-a-single-operation-preview"
-      }
+      "description": "<p>A fully qualified reference name (e.g. <code>refs/heads/master</code>).</p>"
     },
     {
       "name": "GitSSHRemote",

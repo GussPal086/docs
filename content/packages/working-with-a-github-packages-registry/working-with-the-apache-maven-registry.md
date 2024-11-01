@@ -15,6 +15,12 @@ versions:
 shortTitle: Apache Maven registry
 ---
 
+{% ifversion ghec %}
+
+> [!NOTE] The Apache Maven registry is not available for {% data variables.enterprise.data_residency %}.
+
+{% endif %}
+
 {% data reusables.package_registry.packages-ghes-release-stage %}
 
 {% data reusables.package_registry.admins-can-configure-package-types %}
@@ -191,5 +197,5 @@ To install an Apache Maven package from {% data variables.product.prodname_regis
 
 ## Further reading
 
-- "[AUTOTITLE](/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry)"
-- "[AUTOTITLE](/packages/learn-github-packages/deleting-and-restoring-a-package)"
+* "[AUTOTITLE](/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry)"
+* "[AUTOTITLE](/packages/learn-github-packages/deleting-and-restoring-a-package)"

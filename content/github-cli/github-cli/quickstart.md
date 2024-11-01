@@ -78,17 +78,23 @@ For each command, and each subsidiary subcommand, you can append the `--help` fl
 
 You can change configuration settings and add aliases or extensions, to make {% data variables.product.prodname_cli %} work the way that suits you best.
 
-- Enter `gh config set SUBCOMMANDS` to configure {% data variables.product.prodname_cli %}'s settings, replacing `SUBCOMMANDS` with the setting you want to adjust.
+* Enter `gh config set SUBCOMMANDS` to configure {% data variables.product.prodname_cli %}'s settings, replacing `SUBCOMMANDS` with the setting you want to adjust.
 
   For example, you can specify the text editor that's used when a {% data variables.product.prodname_cli %} command requires you to edit text - such as when you add the body text for a new issue you're creating. To set your preferred text editor to {% data variables.product.prodname_vscode %} enter `gh config set editor "code -w"`. The `-w` (or `--wait`) flag in this example causes the command to wait for the file to be closed in {% data variables.product.prodname_vscode %} before proceeding with the next step in your terminal.
 
   For more information, see [`gh config set`](https://cli.github.com/manual/gh_config_set).
 
-- Define aliases for commands that you commonly run. For example, if you run `gh alias set prd "pr create --draft"`, you will then be able to run `gh prd` to quickly open a draft pull request. For more information, see [`gh alias`](https://cli.github.com/manual/gh_alias).
+* Define aliases for commands that you commonly run. For example, if you run `gh alias set prd "pr create --draft"`, you will then be able to run `gh prd` to quickly open a draft pull request. For more information, see [`gh alias`](https://cli.github.com/manual/gh_alias).
 
-- Create or add custom commands with {% data variables.product.prodname_cli %} extensions. For more information, see "[AUTOTITLE](/github-cli/github-cli/using-github-cli-extensions)" and "[AUTOTITLE](/github-cli/github-cli/creating-github-cli-extensions)."
+* Create or add custom commands with {% data variables.product.prodname_cli %} extensions. For more information, see "[AUTOTITLE](/github-cli/github-cli/using-github-cli-extensions)" and "[AUTOTITLE](/github-cli/github-cli/creating-github-cli-extensions)."
+
+## Using {% data variables.product.prodname_cli %} with multiple accounts
+
+If you have multiple accounts on the same {% data variables.product.github %} platform, such as {% data variables.location.product_location %}, you can authenticate to each one and switch between them using the `gh auth switch` command. See [gh auth switch](https://cli.github.com/manual/gh_auth_switch) in the {% data variables.product.prodname_cli %} manual.
+
+If you need to use the {% data variables.product.prodname_cli %} across multiple {% data variables.product.github %} platforms, such as a personal account on {% data variables.product.prodname_dotcom_the_website %} and a {% data variables.enterprise.prodname_managed_user %} on {% data variables.enterprise.data_residency_site %}, see "[AUTOTITLE](/github-cli/github-cli/using-multiple-accounts)."
 
 ## Further reading
 
-- [AUTOTITLE](/github-cli/github-cli/github-cli-reference)
-- [{% data variables.product.prodname_cli %} online manual](https://cli.github.com/manual/gh)
+* [AUTOTITLE](/github-cli/github-cli/github-cli-reference)
+* [{% data variables.product.prodname_cli %} online manual](https://cli.github.com/manual/gh)

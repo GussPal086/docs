@@ -26,9 +26,9 @@ However, when you view the commit on {% data variables.location.product_location
 
 There are several possible explanations:
 
-- The local repository is out of date.
-- The branch that contains the commit was deleted, so the commit is no longer referenced.
-- Someone force pushed over the commit.
+* The local repository is out of date.
+* The branch that contains the commit was deleted, so the commit is no longer referenced.
+* Someone force pushed over the commit.
 
 ## The local repository is out of date
 
@@ -43,7 +43,7 @@ You can use `git fetch upstream` to get information from a repository you've for
 
 {% tip %}
 
-**Tip**: For more information, read about [managing remotes and fetching data](https://git-scm.com/book/en/Git-Basics-Working-with-Remotes) in the [Pro Git](https://git-scm.com/book) book.
+**Tip**: For more information, read about [managing remotes and fetching data](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) in the [Pro Git](https://git-scm.com/book) book.
 
 {% endtip %}
 
@@ -87,5 +87,5 @@ Avoid force pushing to a repository unless absolutely necessary. This is especia
 
 ## Further reading
 
-- ["Working with Remotes" from the _Pro Git_ book](https://git-scm.com/book/en/Git-Basics-Working-with-Remotes)
-- ["Data Recovery" from the _Pro Git_ book](https://git-scm.com/book/en/Git-Internals-Maintenance-and-Data-Recovery)
+* ["Working with Remotes" from the _Pro Git_ book](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
+* ["Data Recovery" from the _Pro Git_ book](https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery)

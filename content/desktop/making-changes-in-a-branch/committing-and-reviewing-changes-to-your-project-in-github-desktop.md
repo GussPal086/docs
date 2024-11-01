@@ -34,14 +34,16 @@ Repository administrators can enable rulesets for a branch to enforce specific c
 You can change the way diffs are displayed in {% data variables.product.prodname_desktop %} to suit your reviewing needs.
 
 To change how you view diffs, in the top-right corner of the diff view, click {% octicon "gear" aria-label="The Gear icon" %}.
-- To change how the entire diff is displayed, under "Diff display", select  **Unified** or **Split**. The Unified view shows changes linearly, while the Split view shows old content on the left side and new content on the right side.
-- To hide whitespace changes so you can focus on more substantive changes, select **Hide Whitespace Changes**.
+* To change how the entire diff is displayed, under "Diff display", select  **Unified** or **Split**. The Unified view shows changes linearly, while the Split view shows old content on the left side and new content on the right side.
+* To hide whitespace changes so you can focus on more substantive changes, select **Hide Whitespace Changes**.
 
-![Screenshot of the diff view of a "README" file. A gear icon is outlined in orange above an expanded dropdown displaying "Whitespace" and "Diff display" settings.](/assets/images/help/desktop/diff-selection.png)
+![Screenshot of the diff view of a file. A gear icon is outlined in orange and expanded to display "Whitespace" and "Diff display" settings.](/assets/images/help/desktop/diff-selection.png)
+
+{% data reusables.desktop.diff-tab-size-tip %}
 
 If you need to see more of the file than {% data variables.product.prodname_desktop %} shows by default, you can expand the diff.
-- To see the next few lines above or below the highlighted changes, click the arrow above or below the line numbers.
-- To see the entire file, right-click in the diff view and click **Expand Whole File**.
+* To see the next few lines above or below the highlighted changes, click the arrow above or below the line numbers.
+* To see the entire file, right-click in the diff view and click **Expand Whole File**.
 
 ![Screenshot of the diff view of a "README" file. Over a green "addition" line, in a context menu, the cursor hovers over "Expand Whole File".](/assets/images/help/desktop/expand-diff-view.png)
 
@@ -51,14 +53,14 @@ As you make changes to files in your text editor and save them locally, you will
 
 In the "Changes" tab in the left sidebar:
 
-- The red {% octicon "diff-removed" aria-label="The diff removed icon color-red" %} icon indicates removed files.
-- The yellow {% octicon "diff-modified" aria-label="The diff modified icon color-yellow" %} icon indicates modified files.
-- The green {% octicon "diff-added" aria-label="The diff added icon color-green" %} icon indicates added files.
-- To access stashed changes, click **Stashed Changes**.
-- {% data reusables.desktop.commit-all-desc %}
+* The red {% octicon "diff-removed" aria-label="The diff removed icon color-red" %} icon indicates removed files.
+* The yellow {% octicon "diff-modified" aria-label="The diff modified icon color-yellow" %} icon indicates modified files.
+* The green {% octicon "diff-added" aria-label="The diff added icon color-green" %} icon indicates added files.
+* To access stashed changes, click **Stashed Changes**.
+* {% data reusables.desktop.commit-all-desc %}
 
   ![Screenshot of the "Changes" tab. Above the list of changed files, next to the text "3 changed files", a selected checkbox is outlined in orange.](/assets/images/help/desktop/commit-all.png)
-- {% data reusables.desktop.commit-some-desc %}
+* {% data reusables.desktop.commit-some-desc %}
 
 ### Creating a partial commit
 
@@ -66,7 +68,7 @@ If one file contains multiple changes, but you only want some of those changes t
 
 To exclude changed lines from your commit, click one or more changed lines so the blue disappears. The lines that are still highlighted in blue will be included in the commit.
 
-![Screenshot of the diff view of a text file. Next to the text "I don't want to include this line", the background color behind the line numbers is green, not blue.](/assets/images/help/desktop/partial-commit.png)
+![Screenshot of the diff view of a file. The background color for the line number of "I don't want to include this line" is green, not blue.](/assets/images/help/desktop/partial-commit.png)
 
 ## Discarding changes
 
@@ -115,11 +117,11 @@ Once you're satisfied with the changes you've chosen to include in your commit, 
    ![Screenshot of the "Changes" tab in the sidebar. To the right of a profile picture, a text field containing a commit message is outlined in orange.](/assets/images/help/desktop/commit-message.png)
 1. Optionally, to attribute a commit to another author, click the add co-authors icon and type the username(s) you want to include.
 
-   ![Screenshot of the "Changes" tab. In the corner of the "Description" field, a "person with a plus sign" icon for adding a co-author is outlined in orange.](/assets/images/help/desktop/add-co-author-commit.png)
+   ![Screenshot of the "Changes" tab. In the corner of the "Description" field, the icon for adding a co-author is outlined in orange.](/assets/images/help/desktop/add-co-author-commit.png)
 {% data reusables.desktop.commit-button %}
 1. If the branch you're trying to commit to is protected, Desktop will warn you.
-    - To move your changes, click **switch branches**.
-    - To commit your changes to the protected branch, click **Commit to BRANCH**.
+    * To move your changes, click **switch branches**.
+    * To commit your changes to the protected branch, click **Commit to BRANCH**.
 
    For more information about protected branches, see "[AUTOTITLE](/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)."
 {% data reusables.desktop.push-origin %}
@@ -136,4 +138,4 @@ If you need to undo a commit or revise your commit history (to make it easier fo
 
 ## Further reading
 
-- "[AUTOTITLE](/get-started/using-git)"
+* "[AUTOTITLE](/get-started/using-git)"

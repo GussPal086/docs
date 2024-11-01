@@ -25,13 +25,13 @@ To migrate your repositories from {% data variables.product.prodname_ghe_server 
 
 1. Create a {% data variables.product.pat_generic %} for both the source and destination organization
 1. Fetch the `ownerId` of the destination organization on {% data variables.product.prodname_ghe_cloud %}
-1. Set up a migration source via {% data variables.product.prodname_dotcom_the_website %}'s GraphQL API to identify where you're migrating from
+1. Set up a migration source via {% data variables.product.prodname_dotcom %}'s GraphQL API to identify where you're migrating from
 1. For each repository you want to migrate, repeat these steps.
-   - Use the REST API on {% data variables.location.product_location_enterprise %} to generate migration archives for your repository
-   - Upload your migration archives to a location where they can be accessed by {% data variables.product.prodname_dotcom_the_website %}
-   - Start your migration using the GraphQL API for {% data variables.product.prodname_dotcom_the_website %}, passing in your archive URLs
-   - Check the status of your migration via the GraphQL API
-   - Validate your migration and check the error log
+   * Use the REST API on {% data variables.location.product_location_enterprise %} to generate migration archives for your repository
+   * Upload your migration archives to a location where they can be accessed by {% data variables.product.prodname_dotcom %}
+   * Start your migration using the GraphQL API for your migration destination, passing in your archive URLs
+   * Check the status of your migration via the GraphQL API
+   * Validate your migration and check the error log
 
 {% endapi %}
 
@@ -49,11 +49,11 @@ To migrate your repositories from {% data variables.product.prodname_ghe_server 
 
 ## Prerequisites
 
-- {% data reusables.enterprise-migration-tool.github-trial-prerequisite %}
-- {% data reusables.enterprise-migration-tool.link-to-support-limitations %} For more information, see "[AUTOTITLE](/migrations/using-github-enterprise-importer/migrating-between-github-products/about-migrations-between-github-products)."
-- {% data reusables.enterprise-migration-tool.delta-migrations-not-supported %}
-- In both the source and destination organizations, you must be either an organization owner or be granted the migrator role. For more information, see "[AUTOTITLE](/migrations/using-github-enterprise-importer/migrating-between-github-products/managing-access-for-a-migration-between-github-products#about-the-migrator-role)."
-- If you use {% data variables.product.prodname_ghe_server %} 3.8 or higher, you need access to the {% data variables.enterprise.management_console %}.
+* {% data reusables.enterprise-migration-tool.github-trial-prerequisite %}
+* {% data reusables.enterprise-migration-tool.link-to-support-limitations %} For more information, see "[AUTOTITLE](/migrations/using-github-enterprise-importer/migrating-between-github-products/about-migrations-between-github-products)."
+* {% data reusables.enterprise-migration-tool.delta-migrations-not-supported %}
+* In both the source and destination organizations, you must be either an organization owner or be granted the migrator role. For more information, see "[AUTOTITLE](/migrations/using-github-enterprise-importer/migrating-between-github-products/managing-access-for-a-migration-between-github-products#about-the-migrator-role)."
+* If you use {% data variables.product.prodname_ghe_server %} 3.8 or higher, to configure blob storage for exported archives, you need access to the {% data variables.enterprise.management_console %}.
 
 {% api %}
 
@@ -75,7 +75,7 @@ You must first set up blob storage with a supported cloud provider, then configu
 
 {% note %}
 
-**Note**: You only need to configure blob storage if you use {% data variables.product.prodname_ghe_server %} versions 3.8 or higher. If you use {% data variables.product.prodname_ghe_server %} versions 3.7 or lower, skip to "[Step 4: Set up a migration source in GitHub Enterprise Cloud](#step-4-set-up-a-migration-source-in-github-enterprise-cloud)."
+**Note**: You only need to configure blob storage if you use {% data variables.product.prodname_ghe_server %} versions 3.8 or higher. If you use {% data variables.product.prodname_ghe_server %} versions 3.7 or lower, skip to "[Step 4: Set up a migration source in {% data variables.product.prodname_ghe_cloud %}](#step-4-set-up-a-migration-source-in-github-enterprise-cloud)."
 
 Blob storage is required to migrate repositories with large Git source or metadata. If you use {% data variables.product.prodname_ghe_server %} versions 3.7 or lower, you will not be able to perform migrations where your Git source or metadata exports exceed 2GB. To perform these migrations, update to {% data variables.product.prodname_ghe_server %} versions 3.8 or higher.
 
@@ -96,6 +96,10 @@ Blob storage is required to migrate repositories with large Git source or metada
 ### Configuring blob storage in the {% data variables.enterprise.management_console %} of {% data variables.location.product_location_enterprise %}
 
 {% data reusables.enterprise-migration-tool.blob-storage-management-console %}
+
+### Allowing network access
+
+If you have configured firewall rules on your storage account, ensure you have allowed access to the IP ranges for your migration destination. See "[AUTOTITLE](/migrations/using-github-enterprise-importer/migrating-between-github-products/managing-access-for-a-migration-between-github-products#configuring-ip-allow-lists-for-migrations)."
 
 ## Step 4: Set up a migration source in {% data variables.product.prodname_ghe_cloud %}
 
@@ -235,9 +239,9 @@ After both migrations have completed and you have downloaded the archives, you c
 
 ## Step 6: Upload your migration archives
 
-To import your data into {% data variables.product.prodname_ghe_cloud %}, you must pass both archives for each repository (Git source and metadata) from your machine to {% data variables.product.prodname_dotcom_the_website %}, using our GraphQL API.
+To import your data into {% data variables.product.prodname_ghe_cloud %}, you must pass both archives for each repository (Git source and metadata) from your machine to {% data variables.product.prodname_dotcom %}, using our GraphQL API.
 
-If you're using {% data variables.product.prodname_ghe_server %} 3.7 or lower, you must first generate URLs for the archives that are accessible by {% data variables.product.prodname_dotcom_the_website %}. Most customers choose to upload the archives to a cloud provider's blob storage service, such as Amazon S3 or Azure Blob Storage, then generate a short-lived URL for each.
+If you're using {% data variables.product.prodname_ghe_server %} 3.7 or lower, you must first generate URLs for the archives that are accessible by {% data variables.product.prodname_dotcom %}. Most customers choose to upload the archives to a cloud provider's blob storage service, such as Amazon S3 or Azure Blob Storage, then generate a short-lived URL for each.
 
 If you're using {% data variables.product.prodname_ghe_server %} 3.8 or higher, your instance uploads the archives and generates the URLs for you. The `Location` header in the previous step will return the short-lived URL.
 
@@ -352,8 +356,8 @@ First, you must set up blob storage with a supported cloud provider. Then, you m
 
 After you set up blob storage with a supported cloud provider, you must configure your credentials for the storage provider in {% data variables.product.prodname_dotcom %}:
 
-- If you use {% data variables.product.prodname_ghe_server %} 3.8 or higher, configure your credentials in the {% data variables.enterprise.management_console %}.
-- If you use {% data variables.product.prodname_ghe_server %} 3.7 or lower, configure the credentials in the {% data variables.product.prodname_cli %}.
+* If you use {% data variables.product.prodname_ghe_server %} 3.8 or higher, configure your credentials in the {% data variables.enterprise.management_console %}.
+* If you use {% data variables.product.prodname_ghe_server %} 3.7 or lower, configure the credentials in the {% data variables.product.prodname_cli %}.
 
 #### Configuring blob storage in the {% data variables.enterprise.management_console %} of {% data variables.location.product_location_enterprise %}
 
@@ -382,6 +386,10 @@ If you configure your blob storage credentials in the {% data variables.product.
 #### Configuring Azure Blob Storage account credentials in the {% data variables.product.prodname_cli %}
 
 {% data reusables.enterprise-migration-tool.azure-credentials-cli %}
+
+### Allowing network access
+
+If you have configured firewall rules on your storage account, ensure you have allowed access to the IP ranges for your migration destination. See "[AUTOTITLE](/migrations/using-github-enterprise-importer/migrating-between-github-products/managing-access-for-a-migration-between-github-products#configuring-ip-allow-lists-for-migrations)."
 
 ## Step 5: Generate a migration script
 
@@ -414,13 +422,19 @@ gh gei generate-script --github-source-org SOURCE \
   --aws-bucket-name AWS-BUCKET-NAME
 ```
 
-{% data reusables.enterprise-migration-tool.ssl-flag %}
-
-{% data reusables.enterprise-migration-tool.download-migration-logs-flag %}
+#### Placeholders
 
 {% data reusables.enterprise-migration-tool.generate-script-table %}
 {% data reusables.enterprise-migration-tool.ghes-api-url-placeholder %}
 {% data reusables.enterprise-migration-tool.aws-bucket-name-placeholder %}
+
+#### Additional arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `--target-api-url TARGET-API-URL` | {% data reusables.enterprise-migration-tool.add-target-api-url %} |
+| `--no-ssl-verify` | {% data reusables.enterprise-migration-tool.ssl-flag %} |
+| `--download-migration-logs` | Download the migration log for each migrated repository. For more information about migration logs, see "[AUTOTITLE](/migrations/using-github-enterprise-importer/completing-your-migration-with-github-enterprise-importer/accessing-your-migration-logs-for-github-enterprise-importer#downloading-all-migration-logs-for-an-organization)." |
 
 ### Reviewing the migration script
 
@@ -445,14 +459,14 @@ When you migrate repositories, the {% data variables.product.prodname_gei_cli %}
 
 If you're migrating from {% data variables.product.prodname_ghe_server %} 3.7 or earlier, before you run your script, you must set additional environment variables to authenticate to your blob storage provider.
 
-- For Azure Blob Storage, set `AZURE_STORAGE_CONNECTION_STRING` to the connection string for your Azure storage account.
+* For Azure Blob Storage, set `AZURE_STORAGE_CONNECTION_STRING` to the connection string for your Azure storage account.
 
    {% data reusables.enterprise-migration-tool.azure-storage-connection-key %}
-- For AWS S3, set the following environment variables.
-  - `AWS_ACCESS_KEY`: The access key for your bucket
-  - `AWS_SECRET_KEY`: The secret key for your bucket
-  - `AWS_REGION`: The AWS region where your bucket is located
-  - `AWS_SESSION_TOKEN`: The session token, if you're using AWS temporary credentials (see [Using temporary credentials with AWS resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) in the AWS documentation)
+* For AWS S3, set the following environment variables.
+  * `AWS_ACCESS_KEY_ID`: The access key id for your bucket
+  * `AWS_SECRET_ACCESS_KEY`: The secret key for your bucket
+  * `AWS_REGION`: The AWS region where your bucket is located
+  * `AWS_SESSION_TOKEN`: The session token, if you're using AWS temporary credentials (see [Using temporary credentials with AWS resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) in the AWS documentation)
 
 {% data reusables.enterprise-migration-tool.migrate-multiple-repos %}
 
@@ -482,14 +496,23 @@ gh gei migrate-repo --github-source-org SOURCE --source-repo CURRENT-NAME --gith
     --ghes-api-url GHES-API-URL --aws-bucket-name "AWS-BUCKET-NAME"
 ```
 
-{% data reusables.enterprise-migration-tool.ssl-flag %}
-
-{% data reusables.enterprise-migration-tool.skip-releases %}
+#### Placeholders
 
 {% data reusables.enterprise-migration-tool.migrate-repo-table-ec %}
 {% data reusables.enterprise-migration-tool.ghes-api-url-placeholder %}
 {% data reusables.enterprise-migration-tool.azure-storage-connection-string-placeholder %}
 {% data reusables.enterprise-migration-tool.aws-bucket-name-placeholder %}
+
+#### Additional arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `--target-api-url TARGET-API-URL` | {% data reusables.enterprise-migration-tool.add-target-api-url %} |
+| `--no-ssl-verify` | {% data reusables.enterprise-migration-tool.ssl-flag %} |
+| `--skip-releases` | {% data reusables.enterprise-migration-tool.skip-releases %} |
+| `--target-repo-visibility TARGET-VISIBILITY` | {% data reusables.enterprise-migration-tool.set-repository-visibility %} |
+
+#### Aborting the migration
 
 {% data reusables.enterprise-migration-tool.abort-migration %}
 

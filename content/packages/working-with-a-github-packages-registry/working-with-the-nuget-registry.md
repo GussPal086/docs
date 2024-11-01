@@ -20,6 +20,16 @@ shortTitle: NuGet registry
 
 {% data reusables.package_registry.admins-can-configure-package-types %}
 
+{% ifversion ghec %}
+
+## URL for the NuGet registry
+
+If you access {% data variables.product.github %} at {% data variables.product.prodname_dotcom_the_website %}, you will publish packages to https://nuget.pkg.github.com. Examples in this article use this URL.
+
+If you access {% data variables.product.github %} at another domain, such as `octocorp.ghe.com`, replace "https://nuget.pkg.github.com" with `https://nuget.SUBDOMAIN.ghe.com`, where `SUBDOMAIN` is your enterprise's unique subdomain.
+
+{% endif %}
+
 ## Authenticating to {% data variables.product.prodname_registry %}
 
 {% data reusables.package_registry.authenticate-packages %}
@@ -36,6 +46,8 @@ dotnet nuget add source --username USERNAME --password {%raw%}${{ secrets.GITHUB
 ```
 
 Replace `NAMESPACE` with the name of the personal account or organization {% ifversion packages-nuget-v2 %}to which your packages are scoped{% else %}that owns the repository where your packages are hosted{% endif %}.
+
+Replace `USERNAME` with the username to be used when connecting to an authenticated source.
 
 {% ifversion packages-nuget-v2 %}{% else %}{% data reusables.package_registry.authenticate-packages-github-token %}{% endif %}
 
@@ -54,10 +66,10 @@ Replace `NAMESPACE` with the name of the personal account or organization {% ifv
 To authenticate to {% data variables.product.prodname_registry %} with the `dotnet` command-line interface (CLI), create a _nuget.config_ file in your project directory specifying {% data variables.product.prodname_registry %} as a source under `packageSources` for the `dotnet` CLI client.
 
 You must replace:
-- `USERNAME` with the name of your personal account on {% data variables.product.prodname_dotcom %}.
-- `TOKEN` with your {% data variables.product.pat_v1 %}.
-- `NAMESPACE` with the name of the personal account or organization {% ifversion packages-nuget-v2 %}to which your packages are scoped{% else %}that owns the repository where your packages are hosted{% endif %}.{% ifversion ghes %}
-- `HOSTNAME` with the host name for {% data variables.location.product_location %}.{% endif %}
+* `USERNAME` with the name of your personal account on {% data variables.product.prodname_dotcom %}.
+* `TOKEN` with your {% data variables.product.pat_v1 %}.
+* `NAMESPACE` with the name of the personal account or organization {% ifversion packages-nuget-v2 %}to which your packages are scoped{% else %}that owns the repository where your packages are hosted{% endif %}.{% ifversion ghes %}
+* `HOSTNAME` with the host name for {% data variables.location.product_location %}.{% endif %}
 
 {% ifversion ghes %}If your instance has subdomain isolation enabled:
 {% endif %}
@@ -101,7 +113,13 @@ If your instance has subdomain isolation disabled:
 
 ## Publishing a package
 
-You can publish a package to {% data variables.product.prodname_registry %} by authenticating with a _nuget.config_ file, or by using the `--api-key` command line option with your {% data variables.product.prodname_dotcom %} {% data variables.product.pat_v1 %}.
+You can publish a package to {% data variables.product.prodname_registry %} by authenticating with a _nuget.config_ file, using the `--api-key` command line option with your {% data variables.product.prodname_dotcom %} {% data variables.product.pat_v1 %} or by using command that can be run directly from the command line using the `dotnet` command-line interface (CLI).
+
+Replace `OWNER` with your username or company name, and `YOUR_GITHUB_PAT` with your {% data variables.product.pat_generic %}.
+
+```shell
+dotnet nuget add source --username OWNER --password {%raw%}YOUR_GITHUB_PAT{% endraw %} --store-password-in-clear-text --name github "https://{% ifversion fpt or ghec %}nuget.pkg.github.com{% else %}nuget.HOSTNAME{% endif %}/OWNER/index.json"
+```
 
 {% ifversion packages-nuget-v2 %}
 
@@ -109,13 +127,13 @@ The NuGet registry stores packages within your organization or personal account,
 
 {% data reusables.package_registry.publishing-user-scoped-packages %} For more information on linking a published package with a repository, see "[AUTOTITLE](/packages/learn-github-packages/connecting-a-repository-to-a-package)."
 
-If you specify a `RepositoryURL` in your `nuget.config` file, the published package will automatically be connected to the specified repository. For more information, see "[AUTOTITLE](/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry#publishing-a-package-using-a-nugetconfig-file)." For information on linking an already-published package to a repository, see "[AUTOTITLE](/packages/learn-github-packages/connecting-a-repository-to-a-package)."
+If you specify a `RepositoryURL` in your project's _.csproj_ file, the published package will automatically be connected to the specified repository. For more information, see "[AUTOTITLE](/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry#publishing-a-package-using-a-nugetconfig-file)." For information on linking an already-published package to a repository, see "[AUTOTITLE](/packages/learn-github-packages/connecting-a-repository-to-a-package)."
 
 {% endif %}
 
 ### Publishing a package using a GitHub {% data variables.product.pat_generic %} as your API key
 
-If you don't already have a {% data variables.product.pat_generic %} to use for your account on {% data variables.location.product_location %}, see "[AUTOTITLE](/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
+If you don't already have a {% data variables.product.pat_generic %} to use for your account on {% data variables.product.github %}, see "[AUTOTITLE](/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)."
 
 1. Create a new project. Replace `PROJECT_NAME` with the name you'd like to give the project.
 
@@ -152,10 +170,10 @@ When publishing, {% ifversion packages-nuget-v2 %}if you are linking your packag
 
 1. Add your project's specific information to your project's file, which ends in _.csproj_.  Make sure to replace:
 
-   - `1.0.0` with the version number of the package.
-   - `OWNER` with the name of the personal account or organization that owns the repository to which you want to {% ifversion packages-nuget-v2 %}link your package{% else %}publish your package{% endif %}.
-   - `REPOSITORY` with the name of the repository to which you want to connect your package.{% ifversion ghes %}
-   - `HOSTNAME` with the host name for {% data variables.location.product_location %}.{% endif %}
+   * `1.0.0` with the version number of the package.
+   * `OWNER` with the name of the personal account or organization that owns the repository to which you want to {% ifversion packages-nuget-v2 %}link your package{% else %}publish your package{% endif %}.
+   * `REPOSITORY` with the name of the repository to which you want to connect your package.{% ifversion ghes %}
+   * `HOSTNAME` with the host name for {% data variables.location.product_location %}.{% endif %}
 
    ``` xml
    <Project Sdk="Microsoft.NET.Sdk">
@@ -273,4 +291,4 @@ If you're using a `GITHUB_TOKEN` to authenticate to a {% data variables.product.
 
 ## Further reading
 
-- "[AUTOTITLE](/packages/learn-github-packages/deleting-and-restoring-a-package)"
+* "[AUTOTITLE](/packages/learn-github-packages/deleting-and-restoring-a-package)"
